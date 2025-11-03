@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- style -->
+    <link rel="stylesheet" href="style.css" />
+    <!-- style end -->
+    <title>QR Code Generator</title>
+  </head>
+  <body>
+    <!-- script start -->
+    <script src="script.js" defer></script>
+    <!-- script end -->
+    <div class="container">
+      <!-- qr code header start -->
+      <header>
+        <h1>qr code generator</h1>
+        <p>
+          Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ratione,
+          cum.
+        </p>
+      </header>
+      <!-- qr code header end -->
+      <!-- qr code container start -->
+
+      <div class="qr-container">
+        <label for="qr-input">
+          <p id="input-info">
+            masukkan text atau URL yang ingin dibuat kode QR-nya
+          </p>
+        </label>
+        <input
+          type="text"
+          id="qr-input"
+          placeholder="Masukkan Text atau URL"
+          autocomplete="off"
+        />
+        <div id="img-container">
+          <img src="" id="qr-img" />
+        </div>
+        <button id="btn">Generate</button>
+      </div>
+      <!-- qr code container end -->
+    </div>
+  </body>
+</html>
