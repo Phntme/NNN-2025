@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Guess The Number</title>
+  </head>
+  <!-- INI CSS -->
+  <link rel="stylesheet" href="style.css" />
+  <!-- CSS END -->
+  <body>
+    <!-- script js -->
+    <script src="script.js" defer></script>
+    <!-- end js -->
+    <!-- game canvas start -->
+    <div class="wrong-container" id="wrong-container">
+      <div class="wrong-wrapper">
+        <h2>Tebakanmu <span id="wrong-message"></span>!</h2>
+      </div>
+    </div>
+    <div class="game-container">
+      <div class="wrapper">
+        <header>
+          <h1>Tebak Angka</h1>
+          <p>Masukkan angka antara 1 sampai 100</p>
+        </header>
+        <main>
+          <input
+            type="number"
+            min="1"
+            max="100"
+            placeholder="Masukkan angka tebakan"
+            id="user-guess"
+          />
+          <button type="button" id="guess-button">Tebak</button>
+          <p>Sisa kesempatan: <span id="chance-info"></span></p>
+        </main>
+      </div>
+    </div>
+    <!-- game canvas end -->
+  </body>
+</html>
