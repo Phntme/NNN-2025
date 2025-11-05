@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Time Converter</title>
+    <!-- css -->
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <script src="script.js" defer></script>
+    <div class="container">
+      <div class="converter-wrapper">
+        <header>
+          <h1>Time Converter</h1>
+          <p>Ubah jam menjadi detik</p>
+        </header>
+        <div class="input-container">
+          <div class="input-wrapper">
+            <label for="time">masukkan waktu</label>
+            <input type="text" placeholder="HH:MM:SS" id="time" />
+          </div>
+
+          <div class="input-wrapper">
+            <label>hasil</label>
+            <input type="text" readonly id="output" />
+          </div>
+        </div>
+        <button id="btn">convert</button>
+      </div>
+    </div>
+  </body>
+</html>
