@@ -9,6 +9,9 @@
   </head>
   <body>
     <script src="script.js" defer></script>
+    <div id="error">
+      <h1>harap masukkan format waktu yang valid!</h1>
+    </div>
     <div class="container">
       <div class="converter-wrapper">
         <header>
@@ -18,7 +21,12 @@
         <div class="input-container">
           <div class="input-wrapper">
             <label for="time">masukkan waktu</label>
-            <input type="text" placeholder="HH:MM:SS" id="time" />
+            <input
+              type="text"
+              placeholder="HH:MM:SS"
+              id="time"
+              autocomplete="off"
+            />
           </div>
 
           <div class="input-wrapper">

@@ -75,6 +75,33 @@
   font-weight: 500;
 }
 
+#error {
+  position: absolute;
+  top: -10rem;
+  text-align: center;
+  background-color: var(--secondary);
+  width: 15rem;
+  right: 50%;
+  transform: translateX(50%) translateY(0);
+  border-radius: 0.3rem;
+  padding: 1rem;
+  font-size: 0.8rem;
+  -moz-border-radius: 0.3rem;
+  -ms-border-radius: 0.3rem;
+  -o-border-radius: 0.3rem;
+  transition: all 0.5s ease;
+  -webkit-transition: top 0.5s cubic-bezier(0.65, -0.32, 0.25, 1.24);
+  -webkit-border-radius: 0.3rem;
+}
+
+#error h1 {
+  color: var(--background);
+}
+
+#error.active {
+  top: 0;
+}
+
 #btn {
   position: absolute;
   bottom: -1rem;
