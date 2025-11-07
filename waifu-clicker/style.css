@@ -1,0 +1,142 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins&family=Press+Start+2P&display=swap");
+
+:root {
+  --indigo: #242448; /* outline / teks gelap */
+  --lav: #d3bce3; /* panel pastel */
+  --pink: #f8bbd0; /* aksen */
+  --peach: #fac8af; /* aksen 2 */
+  --gold: #ffc038; /* highlight */
+  --snow: #fcfcfc; /* dasar terang */
+  --ink: #1a1a1a; /* pixel black */
+  --pastel-strawberry: #ff7aa6;
+  --strawberry: #e22e63;
+}
+
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+  font-family: "Press Start 2P", cursive;
+}
+
+/* ini container gamenya / background */
+.game-container {
+  width: 100%;
+  height: 100vh;
+  background: linear-gradient(0deg, var(--lav) 0%, var(--peach) 100%);
+  padding: 1rem;
+}
+/* container game end */
+
+/* canvas gamenya */
+.game-wrapper {
+  height: 100%;
+  width: 100%;
+  /* background-color: red; */
+  display: flex;
+  flex-direction: column;
+}
+/* canvas game end */
+
+/* container header game, ini yang diatas tuh. isinya judul game, informasi skor dsb */
+.game-header {
+  font-size: 0.3rem;
+  padding: 0.5rem;
+  width: 100%;
+  background-color: var(--snow);
+  border: 1.5px solid var(--indigo);
+  border-bottom: 0.35rem solid var(--indigo);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* ini container header yang sebelah kiri. isinya ada judul game */
+.game-header__logo {
+  display: flex;
+  align-items: center;
+}
+
+.logo-icon {
+  padding: 0.45rem;
+  border: 1px solid var(--indigo);
+  border-bottom: 2px solid var(--indigo);
+  background-color: var(--gold);
+}
+
+.logo-name {
+  font-style: italic;
+  margin-left: 0.45rem;
+  color: var(--indigo);
+}
+
+/* ini container header yang sebelah kiri end */
+
+/* ini container header yang sebelah kanan. isinya skor player */
+.game-header__point {
+  display: flex;
+  align-items: center;
+}
+
+.point-icon {
+  padding: 0.45rem;
+  border: 1px solid var(--indigo);
+  border-bottom: 2px solid var(--indigo);
+  background-color: var(--pastel-strawberry);
+  margin-right: 0.45rem;
+  transform: rotate(-20deg);
+  -webkit-transform: rotate(-20deg);
+  -moz-transform: rotate(-20deg);
+  -ms-transform: rotate(-20deg);
+  -o-transform: rotate(-20deg);
+}
+/* ini container header yang sebelah kanan end */
+
+/* container header game end */
+
+/* container game image */
+.game-image {
+  width: 100%;
+  border: 1.5px solid var(--indigo);
+  border-bottom: 0.35rem solid var(--indigo);
+  padding: 0.5rem 3rem;
+  background-color: var(--snow);
+  margin-top: 0.5rem;
+}
+
+/* container image */
+.image-container {
+  width: 100%;
+  min-height: 10rem;
+  border: 1.5px solid var(--indigo);
+}
+/* container image end */
+
+/* image */
+.image-container img {
+  width: 100%;
+}
+
+/* container game image end */
+
+/* container button start */
+.game-button {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 0.5rem;
+  padding: 0.5rem;
+}
+
+/* button style start */
+.game-button button {
+  padding: 0.5rem 1rem;
+  background-color: var(--gold);
+  border: 1.5px solid var(--indigo);
+  border-bottom: 0.35rem solid var(--indigo);
+  font-size: 0.5rem;
+}
+/* button style end */
+
+/* container button end */
