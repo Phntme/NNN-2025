@@ -2,6 +2,8 @@ const score = document.getElementById("score"),
   scoreBtn = document.getElementById("score-btn");
 
 let scorePoint = 0;
+let canHold = true,
+  canPress = true;
 
 function addScore() {
   score.textContent = scorePoint += 1;
@@ -19,4 +21,33 @@ scoreBtn.addEventListener("click", () => {
   addScore();
 });
 
-document.addEventListener("keydown");
+document.addEventListener("keydown", function (event) {
+  setInterval(() => {}, 1000);
+  // ini kalo klik H, bisa hold
+  if (event.code === "KeyH") {
+    if (canHold) {
+      canHold = false;
+      btnAnimation();
+      addScore();
+      setTimeout(() => {
+        canHold = true;
+      }, 500);
+    }
+  }
+
+  // ini kalo klik spasi
+  if (event.code === "Space") {
+    event.preventDefault();
+    if (canPress) {
+      canPress = false;
+      btnAnimation();
+      addScore();
+    }
+  }
+});
+
+document.addEventListener("keyup", function (event) {
+  if (event.code === "Space") {
+    canPress = true;
+  }
+});
