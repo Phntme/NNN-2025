@@ -43,7 +43,7 @@
         <!-- container game status start sini -->
         <div class="game-status">
           <div class="status-item__tap">
-            <h2><span>+1</span>/Tap</h2>
+            <h2><span id="tap-status">1</span>/Tap</h2>
           </div>
 
           <div class="status-item__tap">
@@ -82,12 +82,20 @@
                 <h1>Finger Training</h1>
                 <p>+1/Tap</p>
               </header>
-              <button class="score-upgrade">50 <span>⭐</span></button>
+              <button id="upgrade-finger" class="score-upgrade">
+                50 <span>⭐</span>
+              </button>
             </div>
             <div class="upgrade-list__auto upgrade-list__item"></div>
           </div>
         </div>
         <!-- game upgrade section end -->
+
+        <!-- pop up section start -->
+        <div class="currency-minus">
+          <h1>Duitmu Kurang <span id="minus-value"></span> King!</h1>
+        </div>
+        <!-- pop up section end -->
       </div>
     </div>
   </body>
