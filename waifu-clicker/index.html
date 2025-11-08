@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="style.css" />
   </head>
   <body>
+    <script src="script.js" defer></script>
     <div class="game-container">
       <div class="game-wrapper">
         <!-- container header start sini -->
@@ -18,7 +19,7 @@
           </div>
           <div class="game-header__point">
             <span class="point-icon"></span>
-            <h1 class="point-value">value</h1>
+            <h1 class="point-value" id="score"></h1>
           </div>
         </header>
         <!-- container header end sini -->
@@ -36,9 +37,57 @@
 
         <!-- container button start sini -->
         <div class="game-button">
-          <button>TAP</button>
+          <button id="score-btn">TAP</button>
         </div>
         <!-- container button end sini -->
+        <!-- container game status start sini -->
+        <div class="game-status">
+          <div class="status-item__tap">
+            <h2><span>+1</span>/Tap</h2>
+          </div>
+
+          <div class="status-item__tap">
+            <h2><span>+1</span>/Tap</h2>
+          </div>
+
+          <div class="status-item__tap">
+            <h2><span>+1</span>/Tap</h2>
+          </div>
+        </div>
+        <!-- container game status end sini -->
+        <!-- container feature start -->
+        <div class="game-feature">
+          <div class="feature-item feature-item__upgrade">
+            <span>⭐</span>
+            <h2>Upgrade</h2>
+          </div>
+
+          <div class="feature-item feature-item__upgrade">
+            <span>⭐</span>
+            <h2>Upgrade</h2>
+          </div>
+
+          <div class="feature-item feature-item__upgrade">
+            <span>⭐</span>
+            <h2>Upgrade</h2>
+          </div>
+        </div>
+        <!-- container feature end -->
+        <!-- game upgrade section start -->
+        <div class="game-upgrade">
+          <header class="upgrade-header">Upgrade</header>
+          <div class="upgrade-list">
+            <div class="upgrade-list__score upgrade-list__item">
+              <header class="score-header">
+                <h1>Finger Training</h1>
+                <p>+1/Tap</p>
+              </header>
+              <button class="score-upgrade">50 <span>⭐</span></button>
+            </div>
+            <div class="upgrade-list__auto upgrade-list__item"></div>
+          </div>
+        </div>
+        <!-- game upgrade section end -->
       </div>
     </div>
   </body>

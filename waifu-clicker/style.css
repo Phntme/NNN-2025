@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=Poppins&family=Press+Start+2P&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Poppins&family=Jersey+10&display=swap");
 
 :root {
   --indigo: #242448; /* outline / teks gelap */
@@ -13,16 +13,17 @@
 }
 
 * {
+  color: var(--indigo);
   box-sizing: border-box;
   padding: 0;
   margin: 0;
-  font-family: "Press Start 2P", cursive;
+  font-family: "Jersey 10", cursive;
 }
 
 /* ini container gamenya / background */
 .game-container {
   width: 100%;
-  height: 100vh;
+  min-height: 100vh;
   background: linear-gradient(0deg, var(--lav) 0%, var(--peach) 100%);
   padding: 1rem;
 }
@@ -32,7 +33,6 @@
 .game-wrapper {
   height: 100%;
   width: 100%;
-  /* background-color: red; */
   display: flex;
   flex-direction: column;
 }
@@ -40,12 +40,12 @@
 
 /* container header game, ini yang diatas tuh. isinya judul game, informasi skor dsb */
 .game-header {
-  font-size: 0.3rem;
+  font-size: 0.5rem;
   padding: 0.5rem;
   width: 100%;
   background-color: var(--snow);
   border: 1.5px solid var(--indigo);
-  border-bottom: 0.35rem solid var(--indigo);
+  border-bottom: 0.25rem solid var(--indigo);
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -98,7 +98,7 @@
 .game-image {
   width: 100%;
   border: 1.5px solid var(--indigo);
-  border-bottom: 0.35rem solid var(--indigo);
+  border-bottom: 0.25rem solid var(--indigo);
   padding: 0.5rem 3rem;
   background-color: var(--snow);
   margin-top: 0.5rem;
@@ -134,9 +134,138 @@
   padding: 0.5rem 1rem;
   background-color: var(--gold);
   border: 1.5px solid var(--indigo);
-  border-bottom: 0.35rem solid var(--indigo);
-  font-size: 0.5rem;
+  border-bottom: 0.25rem solid var(--indigo);
+  font-size: 1rem;
+  transition: all 0.02s ease;
+  -webkit-transition: all 0.02s ease;
+  -moz-transition: all 0.02s ease;
+  -ms-transition: all 0.02s ease;
+  -o-transition: all 0.02s ease;
+}
+
+.game-button button.btn-active {
+  transform: translateY(0.1rem);
+  -webkit-transform: translateY(0.1rem);
+  -moz-transform: translateY(0.1rem);
+  -ms-transform: translateY(0.1rem);
+  -o-transform: translateY(0.1rem);
+  border-bottom: 1.5px solid var(--indigo);
 }
 /* button style end */
 
 /* container button end */
+
+/* container game status start */
+.game-status {
+  width: 100%;
+  padding: 0.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  justify-content: center;
+}
+/* status item tap start here */
+.status-item__tap {
+  font-size: 0.5rem;
+  letter-spacing: 0.35rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  border: 1.5px solid var(--indigo);
+  border-bottom: 0.25rem solid var(--indigo);
+  background-color: var(--snow);
+  padding: 0.5rem;
+}
+/* status item tap end here */
+
+/* container game status end */
+
+/* container game feature start */
+.game-feature {
+  width: 100%;
+  padding: 0.5rem;
+  display: flex;
+  gap: 0.5rem;
+  justify-content: space-evenly;
+}
+/* feature item */
+.feature-item {
+  flex: 1;
+  font-size: 0.5rem;
+  background-color: var(--gold);
+  padding: 0.5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border: 1.5px solid var(--indigo);
+  border-bottom: 0.25rem solid var(--indigo);
+}
+
+.feature-item span {
+  margin-bottom: 0.25rem;
+  font-size: 0.5rem;
+}
+/* container game feature end */
+
+/* container game upgrade start */
+.game-upgrade {
+  width: 100%;
+  margin-top: 0.5rem;
+  padding: 0.5rem;
+  background-color: var(--snow);
+  border: 1.5px solid var(--indigo);
+  border-bottom: 0.25rem solid var(--indigo);
+  display: flex;
+  flex-direction: column;
+}
+
+.upgrade-header {
+  font-size: 1rem;
+  margin-bottom: 0.5rem;
+  text-align: center;
+}
+
+.upgrade-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.upgrade-list__item {
+  padding: 0.5rem 1rem;
+  background-color: var(--lav);
+  border: 1.5px solid var(--indigo);
+  border-bottom: 0.25rem solid var(--indigo);
+}
+
+.upgrade-list__score {
+  display: flex;
+  justify-content: space-between;
+}
+
+.score-header {
+  font-size: 0.5rem;
+  letter-spacing: 0.15rem;
+}
+
+.score-header p {
+  font-size: 0.75rem;
+}
+
+.score-upgrade {
+  padding: 0.5rem;
+  background-color: var(--gold);
+  text-align: center;
+  font-size: 1rem;
+  justify-content: space-evenly;
+  align-items: center;
+  display: flex;
+  border: 1.5px solid var(--indigo);
+  border-bottom: 0.2rem solid var(--indigo);
+}
+
+.score-upgrade span {
+  font-size: 0.5rem;
+}
+/* container game upgrade end */
