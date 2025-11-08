@@ -22,7 +22,6 @@ scoreBtn.addEventListener("click", () => {
 });
 
 document.addEventListener("keydown", function (event) {
-  setInterval(() => {}, 1000);
   // ini kalo klik H, bisa hold
   if (event.code === "KeyH") {
     if (canHold) {
