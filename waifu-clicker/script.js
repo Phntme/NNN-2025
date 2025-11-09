@@ -3,7 +3,9 @@ const score = document.getElementById("score"),
   upgradeFinger = document.getElementById("upgrade-finger"),
   minusPop = document.querySelector(".currency-minus"),
   minusValue = document.getElementById("minus-value"),
-  tapStatus = document.getElementById("tap-status");
+  tapValue = document.getElementById("tap-value"),
+  tapStatus = document.getElementById("tap-status"),
+  gameImg = document.querySelector(".game-image");
 
 // harga upgrade
 const fingerCost = 50;
@@ -11,7 +13,23 @@ const fingerCost = 50;
 let scorePoint = 0;
 let canHold = true,
   canPress = true,
-  clickPoint = 1;
+  clickPoint = 1,
+  multiplier = 1;
+
+// pop up score
+function scorePopup(number, operasi) {
+  const scorePop = document.createElement("div");
+  scorePop.classList.add("score-popup");
+  if (operasi === "-") {
+    scorePop.classList.add("minus");
+  }
+  scorePop.textContent = `${operasi} ${number}`;
+  gameImg.appendChild(scorePop);
+
+  setTimeout(() => {
+    scorePop.remove();
+  }, 1000);
+}
 
 // fungsi nambah score
 function addScore() {
@@ -24,6 +42,15 @@ function btnAnimation() {
   setInterval(() => {
     scoreBtn.classList.remove("btn-active");
   }, 100);
+}
+
+//function animasi tap status kalo di upgrade
+function tapAnimation() {
+  console.log("hello");
+  tapStatus.classList.add("active");
+  setTimeout(() => {
+    tapStatus.classList.remove("active");
+  }, 500);
 }
 
 // fungsi duit kurang bjirla
@@ -50,6 +77,7 @@ function berhasilUpgrade(harga) {
 
 // kalo button skor diklik
 scoreBtn.addEventListener("click", () => {
+  scorePopup(clickPoint, "+");
   btnAnimation();
   addScore();
 });
@@ -61,6 +89,7 @@ document.addEventListener("keydown", function (event) {
       canHold = false;
       btnAnimation();
       addScore();
+      scorePopup(clickPoint, "+");
       setTimeout(() => {
         canHold = true;
       }, 500);
@@ -74,6 +103,7 @@ document.addEventListener("keydown", function (event) {
       canPress = false;
       btnAnimation();
       addScore();
+      scorePopup(clickPoint, "+");
     }
   }
 });
@@ -84,11 +114,18 @@ document.addEventListener("keyup", function (event) {
   }
 });
 
+gameImg.addEventListener("click", () => {
+  addScore();
+  scorePopup(clickPoint, "+");
+});
+
 // upgrade click
 function fingerTraining() {
   if (scorePoint >= fingerCost) {
     berhasilUpgrade(fingerCost);
-    tapStatus.textContent = clickPoint;
+    scorePopup(fingerCost, "-");
+    tapAnimation();
+    tapValue.textContent = clickPoint;
   } else {
     minusValue.textContent = duitKurang(fingerCost);
   }

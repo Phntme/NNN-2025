@@ -43,7 +43,7 @@
         <!-- container game status start sini -->
         <div class="game-status">
           <div class="status-item__tap">
-            <h2><span id="tap-status">1</span>/Tap</h2>
+            <h2 id="tap-status">+<span id="tap-value">1</span>/Tap</h2>
           </div>
 
           <div class="status-item__tap">
@@ -75,23 +75,34 @@
         <!-- container feature end -->
         <!-- game upgrade section start -->
         <div class="game-upgrade">
-          <header class="upgrade-header">Upgrade</header>
+          <header class="upgrade-header__panel">Upgrade</header>
           <div class="upgrade-list">
+            <!-- upgrade score per tap -->
             <div class="upgrade-list__score upgrade-list__item">
-              <header class="score-header">
+              <header class="upgrade-header">
                 <h1>Finger Training</h1>
                 <p>+1/Tap</p>
               </header>
-              <button id="upgrade-finger" class="score-upgrade">
+              <button id="upgrade-finger" class="upgrade-button">
                 50 <span>⭐</span>
               </button>
             </div>
-            <div class="upgrade-list__auto upgrade-list__item"></div>
+            <!-- upgrade score per tap end -->
+            <!-- upgrade auto clicker -->
+            <div class="upgrade-list__auto upgrade-list__item">
+              <header class="upgrade-header">
+                <h1>Sugar Boost</h1>
+                <p>+0.5/second</p>
+              </header>
+              <button class="upgrade-button">200 <span>⭐</span></button>
+            </div>
+            <!-- upgrade auto clicker end -->
           </div>
         </div>
         <!-- game upgrade section end -->
 
         <!-- pop up section start -->
+        <!-- pop up minus -->
         <div class="currency-minus">
           <h1>Duitmu Kurang <span id="minus-value"></span> King!</h1>
         </div>
