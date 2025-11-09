@@ -7,14 +7,49 @@ const score = document.getElementById("score"),
   tapStatus = document.getElementById("tap-status"),
   gameImg = document.querySelector(".game-image");
 
+//game data
+const gameData = {
+  scorePoint: 0,
+  clickPoint: 1,
+  multiplier: 1,
+  upgrade: [
+    {
+      upgradeName: "finger",
+      upgradeStatus: false,
+      upgradeLevel: 1,
+    },
+  ],
+};
+
+loadGame();
+
+// save game function
+function saveGame() {
+  const gameSaveData = JSON.stringify(gameData);
+  localStorage.setItem("wai-fu!dataGame", gameSaveData);
+}
+
+// load game function
+function loadGame() {
+  const rawData = localStorage.getItem("wai-fu!dataGame");
+
+  if (!rawData) return;
+
+  const loadedData = JSON.parse(rawData);
+  Object.assign(gameData, loadedData);
+  updateUI();
+}
+
+function updateUI() {
+  score.textContent = gameData.scorePoint;
+  tapValue.textContent = gameData.upgrade[0].upgradeLevel;
+}
+
 // harga upgrade
 const fingerCost = 50;
 
-let scorePoint = 0;
 let canHold = true,
-  canPress = true,
-  clickPoint = 1,
-  multiplier = 1;
+  canPress = true;
 
 // pop up score
 function scorePopup(number, operasi) {
@@ -33,7 +68,8 @@ function scorePopup(number, operasi) {
 
 // fungsi nambah score
 function addScore() {
-  score.textContent = scorePoint += clickPoint;
+  score.textContent = gameData.scorePoint += gameData.clickPoint;
+  saveGame();
 }
 
 // fungsi animasi
@@ -46,7 +82,6 @@ function btnAnimation() {
 
 //function animasi tap status kalo di upgrade
 function tapAnimation() {
-  console.log("hello");
   tapStatus.classList.add("active");
   setTimeout(() => {
     tapStatus.classList.remove("active");
@@ -55,7 +90,7 @@ function tapAnimation() {
 
 // fungsi duit kurang bjirla
 function duitKurang(kurangBerapa) {
-  let kurang = scorePoint - kurangBerapa;
+  let kurang = gameData.scorePoint - kurangBerapa;
   minusPop.classList.add("show");
   setTimeout(() => {
     minusPop.classList.remove("show");
@@ -65,19 +100,21 @@ function duitKurang(kurangBerapa) {
 
 // fungsi upgrade finger training
 function fingerUpgrade() {
-  clickPoint += 1;
+  gameData.clickPoint = gameData.upgrade[0].upgradeLevel += 1;
+  gameData.upgrade[0].upgradeStatus = true;
 }
 
 // fungsi berhasil upgrade
 function berhasilUpgrade(harga) {
-  scorePoint -= harga;
-  score.textContent = scorePoint;
+  gameData.scorePoint -= harga;
+  score.textContent = gameData.scorePoint;
   fingerUpgrade();
+  saveGame();
 }
 
 // kalo button skor diklik
 scoreBtn.addEventListener("click", () => {
-  scorePopup(clickPoint, "+");
+  scorePopup(gameData.clickPoint, "+");
   btnAnimation();
   addScore();
 });
@@ -89,7 +126,7 @@ document.addEventListener("keydown", function (event) {
       canHold = false;
       btnAnimation();
       addScore();
-      scorePopup(clickPoint, "+");
+      scorePopup(gameData.clickPoint, "+");
       setTimeout(() => {
         canHold = true;
       }, 500);
@@ -103,7 +140,7 @@ document.addEventListener("keydown", function (event) {
       canPress = false;
       btnAnimation();
       addScore();
-      scorePopup(clickPoint, "+");
+      scorePopup(gameData.clickPoint, "+");
     }
   }
 });
@@ -116,16 +153,16 @@ document.addEventListener("keyup", function (event) {
 
 gameImg.addEventListener("click", () => {
   addScore();
-  scorePopup(clickPoint, "+");
+  scorePopup(gameData.clickPoint, "+");
 });
 
 // upgrade click
 function fingerTraining() {
-  if (scorePoint >= fingerCost) {
+  if (gameData.scorePoint >= fingerCost) {
     berhasilUpgrade(fingerCost);
     scorePopup(fingerCost, "-");
     tapAnimation();
-    tapValue.textContent = clickPoint;
+    tapValue.textContent = gameData.clickPoint;
   } else {
     minusValue.textContent = duitKurang(fingerCost);
   }
@@ -135,3 +172,11 @@ function fingerTraining() {
 upgradeFinger.addEventListener("click", () => {
   fingerTraining();
 });
+
+// cheat for development only
+// document.addEventListener("keypress", (event) => {
+//   if (event.code === "KeyA") {
+//     gameData.scorePoint = 99999;
+//     alert("cheat aktif");
+//   }
+// });
