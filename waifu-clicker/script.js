@@ -1,11 +1,14 @@
 const score = document.getElementById("score"),
   scoreBtn = document.getElementById("score-btn"),
   upgradeFinger = document.getElementById("upgrade-finger"),
+  upgradeAuto = document.getElementById("upgrade-auto"),
   minusPop = document.querySelector(".currency-minus"),
   minusValue = document.getElementById("minus-value"),
   tapValue = document.getElementById("tap-value"),
   tapStatus = document.getElementById("tap-status"),
-  gameImg = document.querySelector(".game-image");
+  gameImg = document.querySelector(".game-image"),
+  autoValueInfo = document.querySelectorAll(".auto-value"),
+  autoIntervalInfo = document.querySelectorAll(".auto-interval");
 
 //game data
 const gameData = {
@@ -17,6 +20,12 @@ const gameData = {
       upgradeName: "finger",
       upgradeStatus: false,
       upgradeLevel: 1,
+    },
+    {
+      upgradeName: "auto",
+      upgradeStatus: false,
+      upgradeLevel: 0,
+      autoInterval: 5000,
     },
   ],
 };
@@ -40,19 +49,30 @@ function loadGame() {
   updateUI();
 }
 
+// UPDATE UI
 function updateUI() {
   score.textContent = gameData.scorePoint;
   tapValue.textContent = gameData.upgrade[0].upgradeLevel;
+  const autoIntervalData = Math.floor(gameData.upgrade[1].autoInterval);
+  const autoValueData = gameData.upgrade[1].upgradeLevel;
+  autoIntervalInfo.forEach((span) => {
+    span.textContent = autoIntervalData;
+  });
+  autoValueInfo.forEach((span) => {
+    span.textContent = autoValueData;
+  });
 }
 
 // harga upgrade
-const fingerCost = 50;
+const fingerCost = 50,
+  sugarCost = 200;
 
 let canHold = true,
   canPress = true;
 
 // pop up score
 function scorePopup(number, operasi) {
+  if (number === 0) return;
   const scorePop = document.createElement("div");
   scorePop.classList.add("score-popup");
   if (operasi === "-") {
@@ -104,11 +124,29 @@ function fingerUpgrade() {
   gameData.upgrade[0].upgradeStatus = true;
 }
 
+// fungsi upgrade auto
+function autoUpgrade() {
+  gameData.upgrade[1].upgradeStatus = true;
+  gameData.upgrade[1].upgradeLevel += 0.5;
+}
+
+// interval upgrade auto
+setInterval(() => {
+  gameData.scorePoint += gameData.upgrade[1].upgradeLevel;
+  updateUI();
+  scorePopup(gameData.upgrade[1].upgradeLevel, "+");
+}, gameData.upgrade[1].autoInterval);
+
 // fungsi berhasil upgrade
-function berhasilUpgrade(harga) {
+function berhasilUpgrade(harga, tipeUpgrade) {
   gameData.scorePoint -= harga;
   score.textContent = gameData.scorePoint;
-  fingerUpgrade();
+  if (tipeUpgrade === "finger") {
+    fingerUpgrade();
+    tapAnimation();
+  } else if (tipeUpgrade === "auto") {
+    autoUpgrade();
+  }
   saveGame();
 }
 
@@ -156,16 +194,25 @@ gameImg.addEventListener("click", () => {
   scorePopup(gameData.clickPoint, "+");
 });
 
-// upgrade click
-function fingerTraining() {
-  if (gameData.scorePoint >= fingerCost) {
-    berhasilUpgrade(fingerCost);
-    scorePopup(fingerCost, "-");
-    tapAnimation();
+// cek bisa upgrade gak
+function checkUpg(hargaUpgrade, indexUpgrade) {
+  if (gameData.scorePoint >= hargaUpgrade) {
+    berhasilUpgrade(hargaUpgrade, gameData.upgrade[indexUpgrade].upgradeName);
+    scorePopup(hargaUpgrade, "-");
     tapValue.textContent = gameData.clickPoint;
   } else {
-    minusValue.textContent = duitKurang(fingerCost);
+    minusValue.textContent = duitKurang(hargaUpgrade);
   }
+}
+
+// upgrade finger training
+function fingerTraining() {
+  checkUpg(fingerCost, 0);
+}
+
+// upgrade auto click
+function sugarBoost() {
+  checkUpg(sugarCost, 1);
 }
 
 // kalo upgrade finger diklik
@@ -173,10 +220,24 @@ upgradeFinger.addEventListener("click", () => {
   fingerTraining();
 });
 
-// cheat for development only
+// kalo upgrade auto diklik
+upgradeAuto.addEventListener("click", () => {
+  sugarBoost();
+});
+
+// dev area
+
+// cheat
 // document.addEventListener("keypress", (event) => {
 //   if (event.code === "KeyA") {
 //     gameData.scorePoint = 99999;
 //     alert("cheat aktif");
 //   }
 // });
+// reset
+function reset() {
+  let resetQ = confirm("yakin mau reset");
+  if (resetQ) {
+    localStorage.clear();
+  }
+}

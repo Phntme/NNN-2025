@@ -42,15 +42,18 @@
         <!-- container button end sini -->
         <!-- container game status start sini -->
         <div class="game-status">
-          <div class="status-item__tap">
+          <div class="status-item__tap status-item">
             <h2 id="tap-status">+<span id="tap-value">1</span>/Tap</h2>
           </div>
 
-          <div class="status-item__tap">
-            <h2><span>+1</span>/Tap</h2>
+          <div class="status-item__auto status-item">
+            <h2>
+              +<span class="auto-value">?</span>/
+              <span class="auto-interval">?</span> Second
+            </h2>
           </div>
 
-          <div class="status-item__tap">
+          <div class="status-item__tap status-item">
             <h2><span>+1</span>/Tap</h2>
           </div>
         </div>
@@ -92,9 +95,14 @@
             <div class="upgrade-list__auto upgrade-list__item">
               <header class="upgrade-header">
                 <h1>Sugar Boost</h1>
-                <p>+0.5/second</p>
+                <p>
+                  + <span class="auto-value">?</span>/
+                  <span class="auto-interval">?</span> Second
+                </p>
               </header>
-              <button class="upgrade-button">200 <span>⭐</span></button>
+              <button class="upgrade-button" id="upgrade-auto">
+                200 <span>⭐</span>
+              </button>
             </div>
             <!-- upgrade auto clicker end -->
           </div>
