@@ -56,7 +56,7 @@ function updateUI() {
   const autoIntervalData = Math.floor(gameData.upgrade[1].autoInterval);
   const autoValueData = gameData.upgrade[1].upgradeLevel;
   autoIntervalInfo.forEach((span) => {
-    span.textContent = autoIntervalData;
+    span.textContent = autoIntervalData / 1000;
   });
   autoValueInfo.forEach((span) => {
     span.textContent = autoValueData;
