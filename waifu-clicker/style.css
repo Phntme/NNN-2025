@@ -74,6 +74,7 @@
 
 /* ini container header yang sebelah kanan. isinya skor player */
 .game-header__point {
+  position: relative;
   display: flex;
   align-items: center;
 }
@@ -192,16 +193,26 @@
   -o-transition: transform 0.2s, color 0.2s cubic-bezier(0, 1, 0, 1);
 }
 
-#tap-status.active {
-  color: var(--gold);
-  transform: scale(1.5);
-  -webkit-transform: scale(1.5);
-  -moz-transform: scale(1.5);
-  -ms-transform: scale(1.5);
-  -o-transform: scale(1.5);
+#tap-value {
+  color: inherit;
 }
 
-#tap-value {
+/* status item yang namanya auto  halah pokoe ini style info auto dapet berapa duit perdetik dibawah button jir */
+
+#auto-status {
+  transition: transform 0.2s, color 0.2s cubic-bezier(0, 1, 0, 1);
+  transform: scale(1);
+  -webkit-transform: scale(1);
+  -moz-transform: scale(1);
+  -ms-transform: scale(1);
+  -o-transform: scale(1);
+  -webkit-transition: transform 0.2s, color 0.2s cubic-bezier(0, 1, 0, 1);
+  -moz-transition: transform 0.2s, color 0.2s cubic-bezier(0, 1, 0, 1);
+  -ms-transition: transform 0.2s, color 0.2s cubic-bezier(0, 1, 0, 1);
+  -o-transition: transform 0.2s, color 0.2s cubic-bezier(0, 1, 0, 1);
+}
+
+#auto-status > * {
   color: inherit;
 }
 /* status item tap end here */
@@ -344,7 +355,41 @@
 .score-popup.minus {
   color: var(--gold);
 }
+
+.multi-popup {
+  color: var(--gold);
+  position: absolute;
+  bottom: -0.5rem;
+  right: 0;
+  font-size: 0.75rem;
+  animation: multiPop 1s linear;
+  -webkit-animation: multiPop 1s linear;
+  pointer-events: none;
+}
 /* animation */
+
+/* animasi status tap kalo di upgrade */
+
+#tap-status.active {
+  color: var(--gold);
+  transform: scale(1.5);
+  -webkit-transform: scale(1.5);
+  -moz-transform: scale(1.5);
+  -ms-transform: scale(1.5);
+  -o-transform: scale(1.5);
+}
+
+/* animasi status auto kalo diupgrade */
+
+#auto-status.active {
+  color: var(--gold);
+  transform: scale(1.5);
+  -webkit-transform: scale(1.5);
+  -moz-transform: scale(1.5);
+  -ms-transform: scale(1.5);
+  -o-transform: scale(1.5);
+}
+
 /* score popup animation */
 @keyframes scorePop {
   0% {
@@ -359,5 +404,21 @@
     -moz-transform: translateY(-1rem);
     -ms-transform: translateY(-1rem);
     -o-transform: translateY(-1rem);
+  }
+}
+
+@keyframes multiPop {
+  0% {
+    opacity: 1;
+    transform: translateY(0);
+    -webkit-transform: translateY(0);
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(1rem);
+    -webkit-transform: translateY(1rem);
+    -moz-transform: translateY(1rem);
+    -ms-transform: translateY(1rem);
+    -o-transform: translateY(1rem);
   }
 }

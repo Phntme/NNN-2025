@@ -7,14 +7,19 @@ const score = document.getElementById("score"),
   tapValue = document.getElementById("tap-value"),
   tapStatus = document.getElementById("tap-status"),
   gameImg = document.querySelector(".game-image"),
+  autoStatus = document.getElementById("auto-status"),
   autoValueInfo = document.querySelectorAll(".auto-value"),
   autoIntervalInfo = document.querySelectorAll(".auto-interval");
 
+function c() {
+  console.log("hello wrold");
+}
+
 //game data
 const gameData = {
-  scorePoint: 0,
+  scorePoint: 200,
   clickPoint: 1,
-  multiplier: 1,
+  multiplier: 2,
   upgrade: [
     {
       upgradeName: "finger",
@@ -55,12 +60,15 @@ function updateUI() {
   tapValue.textContent = gameData.upgrade[0].upgradeLevel;
   const autoIntervalData = Math.floor(gameData.upgrade[1].autoInterval);
   const autoValueData = gameData.upgrade[1].upgradeLevel;
-  autoIntervalInfo.forEach((span) => {
-    span.textContent = autoIntervalData / 1000;
-  });
-  autoValueInfo.forEach((span) => {
-    span.textContent = autoValueData;
-  });
+
+  if (gameData.upgrade[1].upgradeStatus) {
+    autoIntervalInfo.forEach((span) => {
+      span.textContent = autoIntervalData / 1000;
+    });
+    autoValueInfo.forEach((span) => {
+      span.textContent = autoValueData;
+    });
+  }
 }
 
 // harga upgrade
@@ -86,10 +94,29 @@ function scorePopup(number, operasi) {
   }, 1000);
 }
 
+// popup multiplier
+function multiPopup(multi) {
+  const parent = document.querySelector(".game-header__point");
+  const multiPop = document.createElement("div");
+  multiPop.classList.add("multi-popup");
+  multiPop.textContent = `x ${multi}`;
+  parent.appendChild(multiPop);
+
+  setTimeout(() => {
+    multiPop.remove();
+  }, 1000);
+}
+
 // fungsi nambah score
 function addScore() {
-  score.textContent = gameData.scorePoint += gameData.clickPoint;
+  score.textContent = gameData.scorePoint +=
+    gameData.clickPoint * gameData.multiplier;
+
   saveGame();
+  if (gameData.multiplier === 1) {
+  } else {
+    multiPopup(gameData.multiplier);
+  }
 }
 
 // fungsi animasi
@@ -101,10 +128,11 @@ function btnAnimation() {
 }
 
 //function animasi tap status kalo di upgrade
-function tapAnimation() {
-  tapStatus.classList.add("active");
+// variable tuh nama variable elemen yang mau di animasikan
+function upgradeAnimation(variable) {
+  variable.classList.add("active");
   setTimeout(() => {
-    tapStatus.classList.remove("active");
+    variable.classList.remove("active");
   }, 500);
 }
 
@@ -132,9 +160,16 @@ function autoUpgrade() {
 
 // interval upgrade auto
 setInterval(() => {
-  gameData.scorePoint += gameData.upgrade[1].upgradeLevel;
+  if (gameData.upgrade[1].upgradeLevel === 0) return;
+
+  gameData.scorePoint += gameData.upgrade[1].upgradeLevel * gameData.multiplier;
   updateUI();
   scorePopup(gameData.upgrade[1].upgradeLevel, "+");
+
+  if (gameData.multiplier === 1) {
+  } else {
+    multiPopup(gameData.multiplier);
+  }
 }, gameData.upgrade[1].autoInterval);
 
 // fungsi berhasil upgrade
@@ -143,11 +178,11 @@ function berhasilUpgrade(harga, tipeUpgrade) {
   score.textContent = gameData.scorePoint;
   if (tipeUpgrade === "finger") {
     fingerUpgrade();
-    tapAnimation();
+    upgradeAnimation(tapStatus);
   } else if (tipeUpgrade === "auto") {
+    upgradeAnimation(autoStatus);
     autoUpgrade();
   }
-  saveGame();
 }
 
 // kalo button skor diklik
@@ -198,6 +233,8 @@ gameImg.addEventListener("click", () => {
 function checkUpg(hargaUpgrade, indexUpgrade) {
   if (gameData.scorePoint >= hargaUpgrade) {
     berhasilUpgrade(hargaUpgrade, gameData.upgrade[indexUpgrade].upgradeName);
+    updateUI();
+    saveGame();
     scorePopup(hargaUpgrade, "-");
     tapValue.textContent = gameData.clickPoint;
   } else {
