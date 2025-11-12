@@ -2,14 +2,20 @@ const score = document.getElementById("score"),
   scoreBtn = document.getElementById("score-btn"),
   upgradeFinger = document.getElementById("upgrade-finger"),
   upgradeAuto = document.getElementById("upgrade-auto"),
+  upgradeMulti = document.getElementById("upgrade-multi"),
   minusPop = document.querySelector(".currency-minus"),
   minusValue = document.getElementById("minus-value"),
+  multiValue = document.getElementById("multi-value"),
   tapValue = document.getElementById("tap-value"),
-  tapStatus = document.getElementById("tap-status"),
   gameImg = document.querySelector(".game-image"),
+  tapStatus = document.getElementById("tap-status"),
   autoStatus = document.getElementById("auto-status"),
+  multiStatus = document.getElementById("multi-status"),
   autoValueInfo = document.querySelectorAll(".auto-value"),
-  autoIntervalInfo = document.querySelectorAll(".auto-interval");
+  autoIntervalInfo = document.querySelectorAll(".auto-interval"),
+  tapPrice = document.getElementById("tap-price"),
+  autoPrice = document.getElementById("auto-price"),
+  multiPrice = document.getElementById("multi-price");
 
 function c() {
   console.log("hello wrold");
@@ -17,9 +23,8 @@ function c() {
 
 //game data
 const gameData = {
-  scorePoint: 200,
+  scorePoint: 500,
   clickPoint: 1,
-  multiplier: 2,
   upgrade: [
     {
       upgradeName: "finger",
@@ -32,8 +37,18 @@ const gameData = {
       upgradeLevel: 0,
       autoInterval: 5000,
     },
+    {
+      upgradeName: "multi",
+      upgradeStatus: false,
+      upgradeLevel: 1,
+    },
   ],
 };
+
+// harga upgrade
+let fingerCost = 50,
+  sugarCost = 200,
+  loveCost = 500;
 
 loadGame();
 
@@ -69,11 +84,19 @@ function updateUI() {
       span.textContent = autoValueData;
     });
   }
+
+  if (gameData.upgrade[2].upgradeStatus) {
+    multiValue.textContent = gameData.upgrade[2].upgradeLevel;
+  }
+
+  tapPrice.textContent = fingerCost;
+  autoPrice.textContent = sugarCost;
+  multiPrice.textContent = loveCost;
 }
 
-// harga upgrade
-const fingerCost = 50,
-  sugarCost = 200;
+function inflasi(hargaUpgrade) {
+  return Math.floor(hargaUpgrade * 1.05);
+}
 
 let canHold = true,
   canPress = true;
@@ -110,12 +133,12 @@ function multiPopup(multi) {
 // fungsi nambah score
 function addScore() {
   score.textContent = gameData.scorePoint +=
-    gameData.clickPoint * gameData.multiplier;
+    gameData.clickPoint * gameData.upgrade[2].upgradeLevel;
 
   saveGame();
-  if (gameData.multiplier === 1) {
+  if (gameData.upgrade[2].upgradeLevel === 1) {
   } else {
-    multiPopup(gameData.multiplier);
+    multiPopup(gameData.upgrade[2].upgradeLevel);
   }
 }
 
@@ -162,15 +185,22 @@ function autoUpgrade() {
 setInterval(() => {
   if (gameData.upgrade[1].upgradeLevel === 0) return;
 
-  gameData.scorePoint += gameData.upgrade[1].upgradeLevel * gameData.multiplier;
+  gameData.scorePoint +=
+    gameData.upgrade[1].upgradeLevel * gameData.upgrade[2].upgradeLevel;
   updateUI();
   scorePopup(gameData.upgrade[1].upgradeLevel, "+");
 
-  if (gameData.multiplier === 1) {
+  if (gameData.upgrade[2].upgradeLevel === 1) {
   } else {
-    multiPopup(gameData.multiplier);
+    multiPopup(gameData.upgrade[2].upgradeLevel);
   }
 }, gameData.upgrade[1].autoInterval);
+
+// fungsi upgrade multiplier
+function multiUpgrade() {
+  gameData.upgrade[2].upgradeStatus = true;
+  gameData.upgrade[2].upgradeLevel += 0.25;
+}
 
 // fungsi berhasil upgrade
 function berhasilUpgrade(harga, tipeUpgrade) {
@@ -179,9 +209,15 @@ function berhasilUpgrade(harga, tipeUpgrade) {
   if (tipeUpgrade === "finger") {
     fingerUpgrade();
     upgradeAnimation(tapStatus);
+    fingerCost = inflasi(fingerCost);
   } else if (tipeUpgrade === "auto") {
     upgradeAnimation(autoStatus);
     autoUpgrade();
+    sugarCost = inflasi(sugarCost);
+  } else if (tipeUpgrade === "multi") {
+    upgradeAnimation(multiStatus);
+    multiUpgrade();
+    loveCost = inflasi(loveCost);
   }
 }
 
@@ -234,8 +270,8 @@ function checkUpg(hargaUpgrade, indexUpgrade) {
   if (gameData.scorePoint >= hargaUpgrade) {
     berhasilUpgrade(hargaUpgrade, gameData.upgrade[indexUpgrade].upgradeName);
     updateUI();
-    saveGame();
     scorePopup(hargaUpgrade, "-");
+    saveGame();
     tapValue.textContent = gameData.clickPoint;
   } else {
     minusValue.textContent = duitKurang(hargaUpgrade);
@@ -252,6 +288,10 @@ function sugarBoost() {
   checkUpg(sugarCost, 1);
 }
 
+// check bisa upgrade multi gak
+function lovePower() {
+  checkUpg(loveCost, 2);
+}
 // kalo upgrade finger diklik
 upgradeFinger.addEventListener("click", () => {
   fingerTraining();
@@ -262,6 +302,9 @@ upgradeAuto.addEventListener("click", () => {
   sugarBoost();
 });
 
+upgradeMulti.addEventListener("click", () => {
+  lovePower();
+});
 // dev area
 
 // cheat
