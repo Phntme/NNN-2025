@@ -54,7 +54,7 @@
           </div>
 
           <div class="status-item__tap status-item">
-            <h2><span>+1</span>/Tap</h2>
+            <h2 id="multi-status">x<span id="multi-value">1</span>/Tap</h2>
           </div>
         </div>
         <!-- container game status end sini -->
@@ -87,7 +87,8 @@
                 <p>+1/Tap</p>
               </header>
               <button id="upgrade-finger" class="upgrade-button">
-                50 <span>⭐</span>
+                <p id="tap-price">50</p>
+                <span>⭐</span>
               </button>
             </div>
             <!-- upgrade score per tap end -->
@@ -101,7 +102,8 @@
                 </p>
               </header>
               <button class="upgrade-button" id="upgrade-auto">
-                200 <span>⭐</span>
+                <p id="auto-price">200</p>
+                <span>⭐</span>
               </button>
             </div>
             <!-- upgrade auto clicker end -->
@@ -109,10 +111,11 @@
             <div class="upgrade-list__multi upgrade-list__item">
               <header class="upgrade-header">
                 <h1>Love Power</h1>
-                <p>+ <span id="multi-value">0</span> Multiplier</p>
+                <p>x <span id="multi-value">0</span> Multiplier</p>
               </header>
               <button class="upgrade-button" id="upgrade-multi">
-                500 <span>⭐</span>
+                <p id="multi-price">500</p>
+                <span>⭐</span>
               </button>
             </div>
             <!-- upgrade multi end  -->
