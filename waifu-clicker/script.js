@@ -30,25 +30,23 @@ const gameData = {
       upgradeName: "finger",
       upgradeStatus: false,
       upgradeLevel: 1,
+      price: 50,
     },
     {
       upgradeName: "auto",
       upgradeStatus: false,
       upgradeLevel: 0,
       autoInterval: 5000,
+      price: 200,
     },
     {
       upgradeName: "multi",
       upgradeStatus: false,
       upgradeLevel: 1,
+      price: 500,
     },
   ],
 };
-
-// harga upgrade
-let fingerCost = 50,
-  sugarCost = 200,
-  loveCost = 500;
 
 loadGame();
 
@@ -71,7 +69,7 @@ function loadGame() {
 
 // UPDATE UI
 function updateUI() {
-  score.textContent = gameData.scorePoint;
+  score.textContent = Math.floor(gameData.scorePoint);
   tapValue.textContent = gameData.upgrade[0].upgradeLevel;
   const autoIntervalData = Math.floor(gameData.upgrade[1].autoInterval);
   const autoValueData = gameData.upgrade[1].upgradeLevel;
@@ -89,9 +87,9 @@ function updateUI() {
     multiValue.textContent = gameData.upgrade[2].upgradeLevel;
   }
 
-  tapPrice.textContent = fingerCost;
-  autoPrice.textContent = sugarCost;
-  multiPrice.textContent = loveCost;
+  tapPrice.textContent = gameData.upgrade[0].price;
+  autoPrice.textContent = gameData.upgrade[1].price;
+  multiPrice.textContent = gameData.upgrade[2].price;
 }
 
 function inflasi(hargaUpgrade) {
@@ -134,6 +132,7 @@ function multiPopup(multi) {
 function addScore() {
   score.textContent = gameData.scorePoint +=
     gameData.clickPoint * gameData.upgrade[2].upgradeLevel;
+  updateUI();
 
   saveGame();
   if (gameData.upgrade[2].upgradeLevel === 1) {
@@ -166,7 +165,7 @@ function duitKurang(kurangBerapa) {
   setTimeout(() => {
     minusPop.classList.remove("show");
   }, 1500);
-  return Math.abs(kurang);
+  return Math.floor(Math.abs(kurang));
 }
 
 // fungsi upgrade finger training
@@ -209,15 +208,15 @@ function berhasilUpgrade(harga, tipeUpgrade) {
   if (tipeUpgrade === "finger") {
     fingerUpgrade();
     upgradeAnimation(tapStatus);
-    fingerCost = inflasi(fingerCost);
+    gameData.upgrade[0].price = inflasi(gameData.upgrade[0].price);
   } else if (tipeUpgrade === "auto") {
     upgradeAnimation(autoStatus);
     autoUpgrade();
-    sugarCost = inflasi(sugarCost);
+    gameData.upgrade[1].price = inflasi(gameData.upgrade[1].price);
   } else if (tipeUpgrade === "multi") {
     upgradeAnimation(multiStatus);
     multiUpgrade();
-    loveCost = inflasi(loveCost);
+    gameData.upgrade[2].price = inflasi(gameData.upgrade[2].price);
   }
 }
 
@@ -280,17 +279,17 @@ function checkUpg(hargaUpgrade, indexUpgrade) {
 
 // upgrade finger training
 function fingerTraining() {
-  checkUpg(fingerCost, 0);
+  checkUpg(gameData.upgrade[0].price, 0);
 }
 
 // upgrade auto click
 function sugarBoost() {
-  checkUpg(sugarCost, 1);
+  checkUpg(gameData.upgrade[1].price, 1);
 }
 
 // check bisa upgrade multi gak
 function lovePower() {
-  checkUpg(loveCost, 2);
+  checkUpg(gameData.upgrade[2].price, 2);
 }
 // kalo upgrade finger diklik
 upgradeFinger.addEventListener("click", () => {
