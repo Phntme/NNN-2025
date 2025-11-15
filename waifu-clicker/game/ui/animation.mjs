@@ -10,11 +10,16 @@ function scorePopup(number, operasi) {
     scorePop.classList.add("minus");
   }
   scorePop.textContent = `${operasi} ${number}`;
+
+  const direction = Math.random() < 0.5 ? "scorePopRight" : "scorePopLeft";
+
+  scorePop.style.animationName = direction;
+
   element.gameImg.appendChild(scorePop);
 
   setTimeout(() => {
     scorePop.remove();
-  }, 1000);
+  }, 750);
 }
 
 // popup multiplier
@@ -27,7 +32,7 @@ function multiPopup(multi) {
 
   setTimeout(() => {
     multiPop.remove();
-  }, 1000);
+  }, 950);
 }
 
 // fungsi animasi button kalo dipencet
