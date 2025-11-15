@@ -1,12 +1,33 @@
 import { gameData } from "../data/gameData.mjs";
 import { element } from "../data/domData.mjs";
 
+// function ngeformat
+function formatNumber(number) {
+  if (number < 1000) return Math.floor(number);
+
+  // unit buat format
+  const unit = [
+    { value: 1e18, symbol: "Qi" },
+    { value: 1e15, symbol: "Qa" },
+    { value: 1e12, symbol: "T" },
+    { value: 1e9, symbol: "B" },
+    { value: 1e6, symbol: "M" },
+    { value: 1e3, symbol: "K" },
+  ];
+
+  for (let i = 0; i < unit.length; i++) {
+    if (number >= unit[i].value) {
+      return (
+        (number / unit[i].value).toFixed(1).replace(/\.0$/, "") + unit[i].symbol
+      );
+    }
+  }
+}
+
 // UPDATE UI
 export function updateUI() {
-  element.score.textContent = Math.floor(gameData.scorePoint);
+  element.score.textContent = formatNumber(gameData.scorePoint);
   element.gameValue.tap.textContent = gameData.upgrade[0].upgradeLevel;
-  const autoIntervalData = Math.floor(gameData.upgrade[1].autoInterval);
-  const autoValueData = gameData.upgrade[1].upgradeLevel;
 
   if (gameData.upgrade[1].upgradeStatus) {
     element.gameValue.auto.textContent = gameData.upgrade[1].upgradeLevel;
@@ -18,7 +39,13 @@ export function updateUI() {
     element.gameValue.multi.textContent = gameData.upgrade[2].upgradeLevel;
   }
 
-  element.upgradePrice.tap.textContent = gameData.upgrade[0].price;
-  element.upgradePrice.auto.textContent = gameData.upgrade[1].price;
-  element.upgradePrice.multi.textContent = gameData.upgrade[2].price;
+  element.upgradePrice.tap.textContent = formatNumber(
+    gameData.upgrade[0].price
+  );
+  element.upgradePrice.auto.textContent = formatNumber(
+    gameData.upgrade[1].price
+  );
+  element.upgradePrice.multi.textContent = formatNumber(
+    gameData.upgrade[2].price
+  );
 }
