@@ -1,5 +1,5 @@
 export const gameData = {
-  scorePoint: 500,
+  scorePoint: 0,
   clickPoint: 1,
   upgrade: [
     {
