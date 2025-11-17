@@ -57,7 +57,6 @@ function duitKurang(kurangBerapa) {
 function upgradeHandler(namaUpgrade) {
   const upgrade = getUpgradeName(namaUpgrade);
   const name = upgrade.upgradeName;
-  console.log(upgrade);
 
   if (checkUpg(upgrade.price)) {
     berhasilUpgrade(upgrade.price, upgrade);
