@@ -37,9 +37,9 @@ function berhasilUpgrade(harga, tipeUpgrade) {
   }
 }
 
-// harga naek 5% tiap upgrade
+// harga naek 7% tiap upgrade
 function inflasi(hargaUpgrade) {
-  return Math.floor(hargaUpgrade * 1.05);
+  return Math.floor(hargaUpgrade * 1.07);
 }
 
 // kalo duit kurang
