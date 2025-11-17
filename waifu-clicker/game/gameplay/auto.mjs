@@ -3,7 +3,7 @@ import { updateUI } from "../ui/updateUI.mjs";
 import * as anim from "../ui/animation.mjs";
 import { saveGame } from "../data/saveLoad.mjs";
 
-let auto = null;
+let auto = gameData.upgrade[1].upgradeStatus;
 
 function startAuto() {
   if (auto) {

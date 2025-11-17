@@ -1,4 +1,3 @@
-import { gameData } from "../data/gameData.mjs";
 import { element } from "../data/domData.mjs";
 
 // pop up score
@@ -44,8 +43,8 @@ function btnAnimation() {
 }
 
 //function animasi status tiap kali dilakukan upgrade
-// variable tuh nama variable elemen yang mau di animasikan
 function upgradeAnimation(variable) {
+  // variable tuh nama variable elemen yang mau di animasikan
   variable.classList.add("active");
   setTimeout(() => {
     variable.classList.remove("active");

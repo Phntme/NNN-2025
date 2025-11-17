@@ -2,11 +2,6 @@ export const element = {
   score: document.getElementById("score"),
   scoreBtn: document.getElementById("score-btn"),
   gameImg: document.querySelector(".game-image"),
-  gameStatus: {
-    tap: document.getElementById("tap-status"),
-    auto: document.getElementById("auto-status"),
-    multi: document.getElementById("multi-status"),
-  },
   gameValue: {
     tap: document.getElementById("tap-value"),
     auto: document.querySelector(".auto-value"),

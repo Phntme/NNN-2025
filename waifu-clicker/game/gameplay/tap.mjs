@@ -3,10 +3,16 @@ import { updateUI } from "../ui/updateUI.mjs";
 import { saveGame } from "../data/saveLoad.mjs";
 import * as anim from "../ui/animation.mjs";
 
+// ngecek kekuatan click
+function getClickPower() {
+  return gameData.upgrade[0].upgradeLevel * gameData.upgrade[2].upgradeLevel;
+}
+
 // fungsi nambah score
 function addScore() {
-  score.textContent = gameData.scorePoint +=
-    gameData.clickPoint * gameData.upgrade[2].upgradeLevel;
+  score.textContent = gameData.scorePoint += getClickPower();
+  anim.scorePopup(getClickPower(), "+");
+
   updateUI();
 
   saveGame();

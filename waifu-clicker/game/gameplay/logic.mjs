@@ -1,45 +1,47 @@
 import { gameData } from "../data/gameData.mjs";
-import * as upgrade from "./upgrade.mjs";
 import * as anim from "../ui/animation.mjs";
 import { element } from "../data/domData.mjs";
 import { updateUI } from "../ui/updateUI.mjs";
-import { loadGame, saveGame } from "../data/saveLoad.mjs";
+import { saveGame } from "../data/saveLoad.mjs";
+import { startAuto } from "./auto.mjs";
+
+// ngecek upgrade apa yang dipilih user
+function getUpgradeName(name) {
+  return gameData.upgrade.find((upg) => upg.upgradeName === name);
+}
 
 // cek bisa upgrade gak
-function checkUpg(hargaUpgrade, indexUpgrade) {
-  if (gameData.scorePoint >= hargaUpgrade) {
-    berhasilUpgrade(hargaUpgrade, gameData.upgrade[indexUpgrade].upgradeName);
-    updateUI();
-    anim.scorePopup(hargaUpgrade, "-");
-    saveGame();
+function checkUpg(price) {
+  if (gameData.scorePoint >= price) {
     element.gameValue.tap.textContent = gameData.clickPoint;
+    return true;
   } else {
-    element.gameValue.minus.textContent = duitKurang(hargaUpgrade);
+    return false;
   }
 }
 
 // kalo berhasil upgrade
-function berhasilUpgrade(harga, tipeUpgrade) {
+function berhasilUpgrade(harga, upgrade) {
   gameData.scorePoint -= harga;
-  score.textContent = gameData.scorePoint;
-  if (tipeUpgrade === "finger") {
-    upgrade.tap();
-    anim.upgradeAnimation(element.gameStatus.tap);
-    gameData.upgrade[0].price = inflasi(gameData.upgrade[0].price);
-  } else if (tipeUpgrade === "auto") {
-    upgrade.auto();
-    anim.upgradeAnimation(element.gameStatus.auto);
-    gameData.upgrade[1].price = inflasi(gameData.upgrade[1].price);
-  } else if (tipeUpgrade === "multi") {
-    upgrade.multi();
-    anim.upgradeAnimation(element.gameStatus.multi);
-    gameData.upgrade[2].price = inflasi(gameData.upgrade[2].price);
-  }
+  let upgradeName = upgrade.upgradeName;
+
+  upgrade.upgradeLevel +=
+    upgradeName === "auto" ? 0.5 : upgradeName === "multi" ? 0.25 : 1;
 }
 
 // harga naek 7% tiap upgrade
-function inflasi(hargaUpgrade) {
-  return Math.floor(hargaUpgrade * 1.07);
+function inflasi(level, hargaUpgrade) {
+  let inflasi;
+  if (level >= 60) {
+    inflasi = 1.2;
+  } else if (level >= 40) {
+    inflasi = 1.15;
+  } else if (level >= 20) {
+    inflasi = 1.1;
+  } else {
+    inflasi = 1.07;
+  }
+  return Math.floor(hargaUpgrade * inflasi);
 }
 
 // kalo duit kurang
@@ -52,4 +54,26 @@ function duitKurang(kurangBerapa) {
   return Math.floor(Math.abs(kurang));
 }
 
-export { checkUpg, berhasilUpgrade, inflasi, duitKurang };
+function upgradeHandler(namaUpgrade) {
+  const upgrade = getUpgradeName(namaUpgrade);
+  const name = upgrade.upgradeName;
+  console.log(upgrade);
+
+  if (checkUpg(upgrade.price)) {
+    berhasilUpgrade(upgrade.price, upgrade);
+    upgrade.upgradeStatus = true;
+    if (name === "auto") {
+      startAuto();
+    }
+    anim.upgradeAnimation(upgrade.animation);
+    anim.scorePopup(upgrade.price, "-");
+    upgrade.price = inflasi(upgrade.upgradeLevel, upgrade.price);
+  } else {
+    element.gameValue.minus.textContent = duitKurang(upgrade.price);
+  }
+
+  saveGame();
+  updateUI();
+}
+
+export { upgradeHandler };

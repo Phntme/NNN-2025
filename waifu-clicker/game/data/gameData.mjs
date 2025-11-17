@@ -1,12 +1,12 @@
 export const gameData = {
-  scorePoint: 0,
-  clickPoint: 1,
+  scorePoint: 500,
   upgrade: [
     {
-      upgradeName: "finger",
+      upgradeName: "tap",
       upgradeStatus: false,
       upgradeLevel: 1,
       price: 50,
+      animation: document.getElementById("tap-status"),
     },
     {
       upgradeName: "auto",
@@ -14,12 +14,14 @@ export const gameData = {
       upgradeLevel: 0,
       autoInterval: 5000,
       price: 200,
+      animation: document.getElementById("auto-status"),
     },
     {
       upgradeName: "multi",
       upgradeStatus: false,
       upgradeLevel: 1,
       price: 500,
+      animation: document.getElementById("multi-status"),
     },
   ],
 };

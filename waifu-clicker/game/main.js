@@ -1,9 +1,9 @@
 import { element } from "./data/domData.mjs";
 import { gameData } from "./data/gameData.mjs";
-import { saveGame, loadGame } from "./data/saveLoad.mjs";
+import { loadGame } from "./data/saveLoad.mjs";
 import { addScore } from "./gameplay/tap.mjs";
+import { upgradeHandler } from "./gameplay/logic.mjs";
 import * as anim from "./ui/animation.mjs";
-import * as logic from "./gameplay/logic.mjs";
 
 loadGame();
 
@@ -24,7 +24,6 @@ document.addEventListener("keydown", function (event) {
       canHold = false;
       anim.btnAnimation();
       addScore();
-      anim.scorePopup(gameData.clickPoint, "+");
       setTimeout(() => {
         canHold = true;
       }, 500);
@@ -38,7 +37,6 @@ document.addEventListener("keydown", function (event) {
       canPress = false;
       anim.btnAnimation();
       addScore();
-      anim.scorePopup(gameData.clickPoint, "+");
     }
   }
 });
@@ -53,20 +51,19 @@ document.addEventListener("keyup", function (event) {
 // kalo user tap di bagian gambar
 element.gameImg.addEventListener("click", () => {
   addScore();
-  anim.scorePopup(gameData.clickPoint, "+");
 });
 
 // kalo upgrade finger diklik
 element.upgradeBtn.tap.addEventListener("click", () => {
-  logic.checkUpg(gameData.upgrade[0].price, 0);
+  upgradeHandler("tap");
 });
 
 // kalo upgrade auto diklik
 element.upgradeBtn.auto.addEventListener("click", () => {
-  logic.checkUpg(gameData.upgrade[1].price, 1);
+  upgradeHandler("auto");
 });
 
 // kalo upgrade multi diklik
 element.upgradeBtn.multi.addEventListener("click", () => {
-  logic.checkUpg(gameData.upgrade[2].price, 2);
+  upgradeHandler("multi");
 });
