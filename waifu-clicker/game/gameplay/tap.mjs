@@ -11,7 +11,7 @@ function getClickPower() {
 // fungsi nambah score
 function addScore() {
   score.textContent = gameData.scorePoint += getClickPower();
-  anim.scorePopup(getClickPower(), "+");
+  anim.scorePopup(Math.floor(getClickPower()), "+");
 
   updateUI();
 
