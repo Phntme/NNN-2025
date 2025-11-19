@@ -5,25 +5,27 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>WAI-FU!</title>
     <!-- ini link css -->
-    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="css/gacha.css" />
   </head>
   <body>
     <script src="game/main.js" type="module" defer></script>
     <div class="game-container">
-      <div class="game-wrapper">
-        <!-- container header start sini -->
-        <header class="game-header">
-          <div class="game-header__logo">
-            <span class="logo-icon"></span>
-            <h1 class="logo-name">WAI-FU!</h1>
-          </div>
-          <div class="game-header__point">
-            <span class="point-icon"></span>
-            <h1 class="point-value" id="score">0</h1>
-          </div>
-        </header>
-        <!-- container header end sini -->
+      <!-- container header start sini -->
+      <header class="game-header">
+        <div class="game-header__logo">
+          <span class="logo-icon"></span>
+          <h1 class="logo-name">WAI-FU!</h1>
+        </div>
+        <div class="game-header__point">
+          <span class="point-icon"></span>
+          <h1 class="point-value" id="score">0</h1>
+        </div>
+      </header>
+      <!-- container header end sini -->
+      <!-- gameplay panel start -->
 
+      <div id="gameplay-panel" class="panel active">
         <!-- container image start sini -->
         <div class="game-image">
           <div class="image-container">
@@ -65,9 +67,9 @@
             <h2>Upgrade</h2>
           </div>
 
-          <div class="feature-item feature-item__upgrade">
+          <div id="warp-button" class="feature-item feature-item__warp">
             <span>⭐</span>
-            <h2>Upgrade</h2>
+            <h2>Warp</h2>
           </div>
 
           <div class="feature-item feature-item__upgrade">
@@ -119,14 +121,59 @@
           </div>
         </div>
         <!-- game upgrade section end -->
-
-        <!-- pop up section start -->
-        <!-- pop up minus -->
-        <div class="currency-minus">
-          <h1>Duitmu Kurang <span id="minus-value"></span> King!</h1>
-        </div>
-        <!-- pop up section end -->
       </div>
+
+      <!-- gameplay panel end -->
+      <!-- gacha panel start -->
+
+      <div id="warp-panel" class="panel">
+        <!-- pilihan banner start -->
+        <div class="banner-select">
+          <div class="select-limited banner active">Limited</div>
+          <div class="select-standart banner">Standart</div>
+        </div>
+        <!-- pilihan banner end -->
+        <!-- banner image start -->
+        <div class="banner-image">
+          <div class="image-limited">
+            <div class="image description">
+              <h2 class="description-header">Limited</h2>
+              <p class="description-paragraph">
+                Every 10 warps, guarantee a 4-star gooner character
+              </p>
+              <div class="f-star__showcase">
+                <div class="f-star__image"><img src="" alt="" /></div>
+                <div class="f-star__image"></div>
+                <div class="f-star__image"></div>
+              </div>
+            </div>
+            <div class="image showcase">
+              <img
+                src="https://assetsio.gnwcdn.com/Honkai-Star-Rail-Aventurine-materials%2C-kit%2C-and-Eidolons-cover.jpg?width=1600&height=900&fit=crop&quality=100&format=png&enable=upscale&auto=webp"
+                alt=""
+              />
+            </div>
+          </div>
+          <div class="image-standart"></div>
+        </div>
+        <!-- banner image end -->
+        <!-- warp button start -->
+        <div class="button-container">
+          <div class="button-single button">1000 x 1</div>
+          <div class="button-multi button">1000 x 10</div>
+          <div id="upgrade-button" class="button close">Close</div>
+        </div>
+        <!-- warp button end -->
+      </div>
+
+      <!-- gacha panel end -->
     </div>
+
+    <!-- pop up section start -->
+    <!-- pop up minus -->
+    <div class="currency-minus">
+      <h1>Duitmu Kurang <span id="minus-value"></span> King!</h1>
+    </div>
+    <!-- pop up section end -->
   </body>
 </html>

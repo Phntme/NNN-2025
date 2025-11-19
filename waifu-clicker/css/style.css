@@ -19,23 +19,33 @@
   margin: 0;
   font-family: "Jersey 10", cursive;
 }
+/* panel rule */
+.panel {
+  display: none;
+}
+.panel.active {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  top: 0;
+  left: 0;
+}
 
 /* ini container gamenya / background */
 .game-container {
   width: 100%;
   min-height: 100vh;
-  background: linear-gradient(0deg, var(--lav) 0%, var(--peach) 100%);
+  position: relative;
   padding: 1rem;
+  background: linear-gradient(0deg, var(--lav) 0%, var(--peach) 100%);
 }
 /* container game end */
 
 /* canvas gamenya */
-.game-wrapper {
-  height: 100%;
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-}
+/* .gameplay-wrapper {
+        } */
 /* canvas game end */
 
 /* container header game, ini yang diatas tuh. isinya judul game, informasi skor dsb */
@@ -248,6 +258,7 @@
 }
 /* feature item */
 .feature-item {
+  cursor: pointer;
   flex: 1;
   font-size: 0.5rem;
   background-color: var(--gold);

@@ -13,10 +13,11 @@ function startAuto() {
   if (gameData.upgrade[1].upgradeStatus === false) return;
 
   auto = setInterval(() => {
-    gameData.scorePoint +=
+    const autoScore =
       gameData.upgrade[1].upgradeLevel * gameData.upgrade[2].upgradeLevel;
+    gameData.scorePoint += autoScore;
     updateUI();
-    anim.scorePopup(gameData.upgrade[1].upgradeLevel, "+");
+    anim.scorePopup(autoScore.toFixed(1), "+");
 
     // cek multiplier aktif ga
     if (gameData.upgrade[2].upgradeLevel === 1) {

@@ -3,7 +3,7 @@ import * as anim from "../ui/animation.mjs";
 import { element } from "../data/domData.mjs";
 import { updateUI } from "../ui/updateUI.mjs";
 import { saveGame } from "../data/saveLoad.mjs";
-import { startAuto } from "./auto.mjs";
+import { startAuto } from "../gameplay/auto.mjs";
 
 // ngecek upgrade apa yang dipilih user
 function getUpgradeName(name) {

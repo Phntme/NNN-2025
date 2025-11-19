@@ -1,0 +1,138 @@
+:root {
+  --indigo: #242448; /* outline / teks gelap */
+  --lav: #d3bce3; /* panel pastel */
+  --pink: #f8bbd0; /* aksen */
+  --peach: #fac8af; /* aksen 2 */
+  --gold: #ffc038; /* highlight */
+  --snow: #fcfcfc; /* dasar terang */
+  --ink: #1a1a1a; /* pixel black */
+  --pastel-strawberry: #ff7aa6;
+  --strawberry: #e22e63;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+/* container banner */
+.banner-select {
+  margin-top: 0.5rem;
+  width: 100%;
+  min-height: 10px;
+  display: flex;
+  gap: 0.5rem;
+}
+
+/* select lgsg 2 bannernya */
+.banner {
+  cursor: pointer;
+  border: 1.5px solid var(--indigo);
+  border-bottom: 0.25rem solid var(--indigo);
+  padding: 0.5rem;
+  background-color: var(--snow);
+  flex: 1;
+  font-size: 1.2rem;
+  color: var(--indigo);
+  transition: border-color 0.2s ease;
+  -webkit-transition: border-color 0.2s ease-in-out;
+  -moz-transition: border-color 0.2s ease;
+  -ms-transition: border-color 0.2s ease;
+  -o-transition: border-color 0.2s ease;
+}
+/* banner kalo di-hover */
+.banner:hover {
+  border-color: var(--strawberry);
+}
+/* banner yg active */
+.banner.active {
+  background-color: var(--gold);
+}
+
+.banner-image {
+  margin-top: 0.5rem;
+  width: 100%;
+}
+.image-limited {
+  gap: 0.5rem;
+  padding: 0.5rem;
+  background-color: var(--snow);
+  display: flex;
+  border: 1.5px solid var(--indigo);
+  border-bottom: 0.25rem solid var(--indigo);
+  position: relative;
+}
+.description {
+  padding: 0.5rem;
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-color: var(--snow);
+  max-width: 40%;
+  border-top-right-radius: 2rem;
+  height: 100%;
+}
+.description-paragraph {
+  font-size: 0.75rem;
+  text-align: justify;
+  color: var(--indigo);
+  filter: opacity(0.5);
+  -webkit-filter: opacity(0.5);
+}
+.showcase {
+  background-size: cover;
+  width: 100%;
+}
+.showcase img {
+  width: inherit;
+}
+.f-star__showcase {
+  display: flex;
+  gap: 0.5rem;
+  margin-top: 0.5rem;
+  width: 100%;
+  height: 50%;
+}
+
+.f-star__image {
+  background-color: red;
+  background: url("https://upload-os-bbs.hoyolab.com/upload/2024/04/26/40717305/7508a8aabc82ff337d66c41cbabdab0b_4014752956873582437.jpeg?x-oss-process=image%2Fresize%2Cs_1000%2Fauto-orient%2C0%2Finterlace%2C1%2Fformat%2Cwebp%2Fquality%2Cq_100");
+  border-radius: 99rem;
+  height: 100%;
+  flex: 1;
+  -webkit-border-radius: 99rem;
+  -moz-border-radius: 99rem;
+  -ms-border-radius: 99rem;
+  -o-border-radius: 99rem;
+  background-size: cover;
+  background-position: center;
+}
+
+/* button container */
+.button-container {
+  display: flex;
+  flex-direction: column;
+  margin-top: 0.5rem;
+  width: 100%;
+  gap: 0.5rem;
+}
+.button {
+  cursor: pointer;
+  padding: 0.5rem;
+  text-align: center;
+  border: 1.5px solid var(--indigo);
+  border-bottom: 0.25rem solid var(--indigo);
+  width: 100%;
+  background-color: var(--gold);
+  transition: filter 0.3s ease-in-out;
+  -webkit-transition: filter 0.3s ease-in-out;
+  -moz-transition: filter 0.3s ease-in-out;
+  -ms-transition: filter 0.3s ease-in-out;
+  -o-transition: filter 0.3s ease-in-out;
+}
+.button:hover {
+  filter: brightness(0.9);
+  -webkit-filter: brightness(0.9);
+}
+.button.close {
+  background-color: var(--strawberry);
+}

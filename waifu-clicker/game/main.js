@@ -1,8 +1,8 @@
 import { element } from "./data/domData.mjs";
-import { gameData } from "./data/gameData.mjs";
 import { loadGame } from "./data/saveLoad.mjs";
 import { addScore } from "./gameplay/tap.mjs";
-import { upgradeHandler } from "./gameplay/logic.mjs";
+import { upgradeHandler } from "./logic/economy.mjs";
+import { showPanel } from "./ui/panel.mjs";
 import * as anim from "./ui/animation.mjs";
 
 loadGame();
@@ -12,7 +12,6 @@ let canHold = true,
 
 // kalo button 'tap' diklik
 element.scoreBtn.addEventListener("click", () => {
-  anim.scorePopup(gameData.clickPoint, "+");
   anim.btnAnimation();
   addScore();
 });
@@ -66,4 +65,12 @@ element.upgradeBtn.auto.addEventListener("click", () => {
 // kalo upgrade multi diklik
 element.upgradeBtn.multi.addEventListener("click", () => {
   upgradeHandler("multi");
+});
+
+element.featureBtn.upgrade.addEventListener("click", () => {
+  showPanel(element.panel.gameplay);
+});
+
+element.featureBtn.warp.addEventListener("click", () => {
+  showPanel(element.panel.warp);
 });

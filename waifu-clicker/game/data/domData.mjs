@@ -22,4 +22,12 @@ export const element = {
   popup: {
     minus: document.querySelector(".currency-minus"),
   },
+  featureBtn: {
+    upgrade: document.getElementById("upgrade-button"),
+    warp: document.getElementById("warp-button"),
+  },
+  panel: {
+    gameplay: document.getElementById("gameplay-panel"),
+    warp: document.getElementById("warp-panel"),
+  },
 };
