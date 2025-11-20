@@ -2,6 +2,7 @@ export const element = {
   score: document.getElementById("score"),
   scoreBtn: document.getElementById("score-btn"),
   gameImg: document.querySelector(".game-image"),
+  transition: document.querySelector(".transition"),
   gameValue: {
     tap: document.getElementById("tap-value"),
     auto: document.querySelector(".auto-value"),
@@ -29,5 +30,13 @@ export const element = {
   panel: {
     gameplay: document.getElementById("gameplay-panel"),
     warp: document.getElementById("warp-panel"),
+  },
+  switch: {
+    limited: document.querySelector(".select-limited"),
+    standart: document.querySelector(".select-standart"),
+  },
+  gachaImg: {
+    limited: document.getElementById("image-limited"),
+    standart: document.getElementById("image-standart"),
   },
 };

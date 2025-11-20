@@ -2,7 +2,7 @@ import { element } from "./data/domData.mjs";
 import { loadGame } from "./data/saveLoad.mjs";
 import { addScore } from "./gameplay/tap.mjs";
 import { upgradeHandler } from "./logic/economy.mjs";
-import { showPanel } from "./ui/panel.mjs";
+import { showPanel, switchPanel } from "./ui/panel.mjs";
 import * as anim from "./ui/animation.mjs";
 
 loadGame();
@@ -73,4 +73,12 @@ element.featureBtn.upgrade.addEventListener("click", () => {
 
 element.featureBtn.warp.addEventListener("click", () => {
   showPanel(element.panel.warp);
+});
+
+element.switch.limited.addEventListener("click", () => {
+  switchPanel(element.gachaImg.limited, element.switch.limited);
+});
+
+element.switch.standart.addEventListener("click", () => {
+  switchPanel(element.gachaImg.standart, element.switch.standart);
 });
