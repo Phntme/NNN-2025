@@ -350,7 +350,7 @@
   border: 1.5px solid var(--indigo);
   border-bottom: 0.25rem solid var(--indigo);
   z-index: 1000;
-  opacity: 0;
+  opacity: 1;
   transition: bottom 0.5s, opacity 0.5s ease;
   -webkit-transition: bottom 0.5s, opacity 0.5s ease;
   -moz-transition: bottom 0.5s, opacity 0.5s ease;
