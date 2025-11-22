@@ -13,7 +13,6 @@ function getUpgradeName(name) {
 // cek bisa upgrade gak
 function checkUpg(price) {
   if (gameData.scorePoint >= price) {
-    element.gameValue.tap.textContent = gameData.clickPoint;
     return true;
   } else {
     return false;
@@ -47,11 +46,11 @@ function inflasi(level, hargaUpgrade) {
 // kalo duit kurang
 function duitKurang(kurangBerapa) {
   let kurang = gameData.scorePoint - kurangBerapa;
-  element.popup.minus.classList.add("show");
+  element.gameValue.minus.textContent = Math.floor(Math.abs(kurang));
+  element.popup.minus.classList.add("showmin");
   setTimeout(() => {
-    element.popup.minus.classList.remove("show");
+    element.popup.minus.classList.remove("showmin");
   }, 1500);
-  return Math.floor(Math.abs(kurang));
 }
 
 function upgradeHandler(namaUpgrade) {
@@ -68,7 +67,7 @@ function upgradeHandler(namaUpgrade) {
     anim.scorePopup(upgrade.price, "-");
     upgrade.price = inflasi(upgrade.upgradeLevel, upgrade.price);
   } else {
-    element.gameValue.minus.textContent = duitKurang(upgrade.price);
+    duitKurang(upgrade.price);
   }
 
   saveGame();

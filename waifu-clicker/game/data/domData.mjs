@@ -8,7 +8,7 @@ export const element = {
     auto: document.querySelector(".auto-value"),
     interval: document.querySelector(".auto-interval"),
     multi: document.getElementById("multi-value"),
-    minus: document.getElementById("minus-value"),
+    minus: document.getElementById("min-value"),
   },
   upgradeBtn: {
     tap: document.getElementById("upgrade-finger"),
@@ -21,7 +21,7 @@ export const element = {
     multi: document.getElementById("multi-price"),
   },
   popup: {
-    minus: document.querySelector(".currency-minus"),
+    minus: document.querySelector(".currency-min"),
   },
   featureBtn: {
     upgrade: document.getElementById("upgrade-button"),

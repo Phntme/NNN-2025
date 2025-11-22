@@ -44,8 +44,12 @@
 /* container game end */
 
 /* canvas gamenya */
-/* .gameplay-wrapper {
-        } */
+.gameplay-wrapper {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
 /* canvas game end */
 
 /* container header game, ini yang diatas tuh. isinya judul game, informasi skor dsb */
@@ -340,31 +344,35 @@
 
 /* pop up section */
 /* pop up minus start*/
-.currency-minus {
+.currency-min {
   position: fixed;
   bottom: -10rem;
   left: 50%;
-  transform: translateX(-50%);
   background-color: var(--strawberry);
   padding: 1rem 2rem;
   border: 1.5px solid var(--indigo);
   border-bottom: 0.25rem solid var(--indigo);
   z-index: 1000;
-  opacity: 1;
-  transition: bottom 0.5s, opacity 0.5s ease;
-  -webkit-transition: bottom 0.5s, opacity 0.5s ease;
-  -moz-transition: bottom 0.5s, opacity 0.5s ease;
-  -ms-transition: bottom 0.5s, opacity 0.5s ease;
-  -o-transition: bottom 0.5s, opacity 0.5s ease;
+  opacity: 0;
+  transition: all 0.3s ease;
+  -webkit-transition: all 0.3s ease;
+  -moz-transition: all 0.3s ease;
+  -ms-transition: all 0.3s ease;
+  -o-transition: all 0.3s ease;
+  transform: translateX(-50%);
+  -webkit-transform: translateX(-50%);
+  -moz-transform: translateX(-50%);
+  -ms-transform: translateX(-50%);
+  -o-transform: translateX(-50%);
 }
 
-.currency-minus h1 {
+.currency-min h1 {
   font-size: 2rem;
   letter-spacing: 0.25rem;
   color: var(--snow);
 }
 
-.currency-minus.show {
+.currency-min.showmin {
   bottom: 1rem;
   opacity: 1;
 }

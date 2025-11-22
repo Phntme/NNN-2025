@@ -11,186 +11,188 @@
   <body>
     <script src="game/main.js" type="module" defer></script>
     <div class="game-container">
-      <!-- container header start sini -->
-      <header class="game-header">
-        <div class="game-header__logo">
-          <span class="logo-icon"></span>
-          <h1 class="logo-name">WAI-FU!</h1>
-        </div>
-        <div class="game-header__point">
-          <span class="point-icon"></span>
-          <h1 class="point-value" id="score">0</h1>
-        </div>
-      </header>
-      <!-- container header end sini -->
-      <!-- gameplay panel start -->
-
-      <div id="gameplay-panel" class="panel active">
-        <!-- container image start sini -->
-        <div class="game-image">
-          <div class="image-container">
-            <img
-              src="https://media1.tenor.com/m/erElkDnmirQAAAAC/evernight-lonely.gif"
-              alt=""
-            />
+      <div class="gameplay-wrapper">
+        <!-- container header start sini -->
+        <header class="game-header">
+          <div class="game-header__logo">
+            <span class="logo-icon"></span>
+            <h1 class="logo-name">WAI-FU!</h1>
           </div>
-        </div>
-        <!-- container image end sini -->
-
-        <!-- container button start sini -->
-        <div class="game-button">
-          <button id="score-btn">TAP</button>
-        </div>
-        <!-- container button end sini -->
-        <!-- container game status start sini -->
-        <div class="game-status">
-          <div class="status-item__tap status-item">
-            <h2 id="tap-status">+<span id="tap-value">1</span>/Tap</h2>
+          <div class="game-header__point">
+            <span class="point-icon"></span>
+            <h1 class="point-value" id="score">0</h1>
           </div>
+        </header>
+        <!-- container header end sini -->
+        <!-- gameplay panel start -->
 
-          <div class="status-item__auto status-item">
-            <h2 id="auto-status">
-              +<span class="auto-value">0</span> /
-              <span class="auto-interval">5</span> Second
-            </h2>
-          </div>
-
-          <div class="status-item__tap status-item">
-            <h2 id="multi-status">x<span id="multi-value">1</span>/Tap</h2>
-          </div>
-        </div>
-        <!-- container game status end sini -->
-        <!-- container feature start -->
-        <div class="game-feature">
-          <div class="feature-item feature-item__upgrade">
-            <span>⭐</span>
-            <h2>Upgrade</h2>
-          </div>
-
-          <div id="warp-button" class="feature-item feature-item__warp">
-            <span>⭐</span>
-            <h2>Warp</h2>
-          </div>
-
-          <div class="feature-item feature-item__upgrade">
-            <span>⭐</span>
-            <h2>Upgrade</h2>
-          </div>
-        </div>
-        <!-- container feature end -->
-        <!-- game upgrade section start -->
-        <div class="game-upgrade">
-          <header class="upgrade-header__panel">Upgrade</header>
-          <div class="upgrade-list">
-            <!-- upgrade score per tap -->
-            <div class="upgrade-list__score upgrade-list__item">
-              <header class="upgrade-header">
-                <h1>Finger Training</h1>
-                <p>+1/Tap</p>
-              </header>
-              <button id="upgrade-finger" class="upgrade-button">
-                <p id="tap-price">50</p>
-                <span>⭐</span>
-              </button>
-            </div>
-            <!-- upgrade score per tap end -->
-            <!-- upgrade auto clicker -->
-            <div class="upgrade-list__auto upgrade-list__item">
-              <header class="upgrade-header">
-                <h1>Sugar Boost</h1>
-                <p>+ <span>0.5</span> / <span>5</span> Second</p>
-              </header>
-              <button class="upgrade-button" id="upgrade-auto">
-                <p id="auto-price">200</p>
-                <span>⭐</span>
-              </button>
-            </div>
-            <!-- upgrade auto clicker end -->
-            <!-- upgrade multi start  -->
-            <div class="upgrade-list__multi upgrade-list__item">
-              <header class="upgrade-header">
-                <h1>Love Power</h1>
-                <p>+ <span id="multi-value">0.25</span> Multiplier</p>
-              </header>
-              <button class="upgrade-button" id="upgrade-multi">
-                <p id="multi-price">500</p>
-                <span>⭐</span>
-              </button>
-            </div>
-            <!-- upgrade multi end  -->
-          </div>
-        </div>
-        <!-- game upgrade section end -->
-      </div>
-
-      <!-- gameplay panel end -->
-      <!-- gacha panel start -->
-
-      <div id="warp-panel" class="panel">
-        <!-- pilihan banner start -->
-        <div class="banner-select">
-          <div class="select-limited banner active">Limited</div>
-          <div class="select-standart banner">Standart</div>
-        </div>
-        <!-- pilihan banner end -->
-        <!-- banner image start -->
-        <div class="banner-image">
-          <div id="image-limited" class="show active">
-            <div class="image description">
-              <h2 class="description-header">Limited</h2>
-              <p class="description-paragraph">
-                Every 10 warps, guarantee a 4-star gooner character
-              </p>
-              <div class="f-star__showcase">
-                <div class="f-star__image"><img src="" alt="" /></div>
-                <div class="f-star__image"></div>
-                <div class="f-star__image"></div>
-              </div>
-            </div>
-            <div class="image showcase">
+        <div id="gameplay-panel" class="panel active">
+          <!-- container image start sini -->
+          <div class="game-image">
+            <div class="image-container">
               <img
-                src="https://assetsio.gnwcdn.com/Honkai-Star-Rail-Aventurine-materials%2C-kit%2C-and-Eidolons-cover.jpg?width=1600&height=900&fit=crop&quality=100&format=png&enable=upscale&auto=webp"
+                src="https://media1.tenor.com/m/erElkDnmirQAAAAC/evernight-lonely.gif"
                 alt=""
               />
             </div>
           </div>
-          <div id="image-standart" class="show">
-            <div class="image description">
-              <h2 class="description-header">Standart</h2>
-              <p class="description-paragraph">
-                Every 10 warps, guarantee a 4-star gooner character
-              </p>
-              <div class="f-star__showcase">
-                <div class="f-star__standart"><img src="" alt="" /></div>
-                <div class="f-star__standart"></div>
-                <div class="f-star__standart"></div>
-              </div>
+          <!-- container image end sini -->
+
+          <!-- container button start sini -->
+          <div class="game-button">
+            <button id="score-btn">TAP</button>
+          </div>
+          <!-- container button end sini -->
+          <!-- container game status start sini -->
+          <div class="game-status">
+            <div class="status-item__tap status-item">
+              <h2 id="tap-status">+<span id="tap-value">1</span>/Tap</h2>
             </div>
-            <div class="image showcase">
-              <img
-                src="https://gamespace.com/wp-content/uploads/2025/07/Phainon-the-Pinnacle-of-HSR-Hypercarry-780x419.jpg"
-                alt=""
-              />
+
+            <div class="status-item__auto status-item">
+              <h2 id="auto-status">
+                +<span class="auto-value">0</span> /
+                <span class="auto-interval">5</span> Second
+              </h2>
+            </div>
+
+            <div class="status-item__tap status-item">
+              <h2 id="multi-status">x<span id="multi-value">1</span>/Tap</h2>
             </div>
           </div>
+          <!-- container game status end sini -->
+          <!-- container feature start -->
+          <div class="game-feature">
+            <div class="feature-item feature-item__upgrade">
+              <span>⭐</span>
+              <h2>Upgrade</h2>
+            </div>
+
+            <div id="warp-button" class="feature-item feature-item__warp">
+              <span>⭐</span>
+              <h2>Warp</h2>
+            </div>
+
+            <div class="feature-item feature-item__upgrade">
+              <span>⭐</span>
+              <h2>Upgrade</h2>
+            </div>
+          </div>
+          <!-- container feature end -->
+          <!-- game upgrade section start -->
+          <div class="game-upgrade">
+            <header class="upgrade-header__panel">Upgrade</header>
+            <div class="upgrade-list">
+              <!-- upgrade score per tap -->
+              <div class="upgrade-list__score upgrade-list__item">
+                <header class="upgrade-header">
+                  <h1>Finger Training</h1>
+                  <p>+1/Tap</p>
+                </header>
+                <button id="upgrade-finger" class="upgrade-button">
+                  <p id="tap-price">50</p>
+                  <span>⭐</span>
+                </button>
+              </div>
+              <!-- upgrade score per tap end -->
+              <!-- upgrade auto clicker -->
+              <div class="upgrade-list__auto upgrade-list__item">
+                <header class="upgrade-header">
+                  <h1>Sugar Boost</h1>
+                  <p>+ <span>0.5</span> / <span>5</span> Second</p>
+                </header>
+                <button class="upgrade-button" id="upgrade-auto">
+                  <p id="auto-price">200</p>
+                  <span>⭐</span>
+                </button>
+              </div>
+              <!-- upgrade auto clicker end -->
+              <!-- upgrade multi start  -->
+              <div class="upgrade-list__multi upgrade-list__item">
+                <header class="upgrade-header">
+                  <h1>Love Power</h1>
+                  <p>+ <span id="multi-value">0.25</span> Multiplier</p>
+                </header>
+                <button class="upgrade-button" id="upgrade-multi">
+                  <p id="multi-price">500</p>
+                  <span>⭐</span>
+                </button>
+              </div>
+              <!-- upgrade multi end  -->
+            </div>
+          </div>
+          <!-- game upgrade section end -->
         </div>
-        <!-- banner image end -->
-        <!-- warp button start -->
-        <div class="button-container">
-          <div class="button-single button">1000 x 1</div>
-          <div class="button-multi button">1000 x 10</div>
-          <div id="upgrade-button" class="button close">Close</div>
+        <!-- pop up minus -->
+        <div class="currency-min">
+          <h1>Duitmu Kurang <span id="min-value"></span> King!</h1>
         </div>
-        <!-- warp button end -->
+
+        <!-- gameplay panel end -->
+        <!-- gacha panel start -->
+
+        <div id="warp-panel" class="panel">
+          <!-- pilihan banner start -->
+          <div class="banner-select">
+            <div class="select-limited banner active">Limited</div>
+            <div class="select-standart banner">Standart</div>
+          </div>
+          <!-- pilihan banner end -->
+          <!-- banner image start -->
+          <div class="banner-image">
+            <div id="image-limited" class="show active">
+              <div class="image description">
+                <h2 class="description-header">Limited</h2>
+                <p class="description-paragraph">
+                  Every 10 warps, guarantee a 4-star gooner character
+                </p>
+                <div class="f-star__showcase">
+                  <div class="f-star__image"><img src="" alt="" /></div>
+                  <div class="f-star__image"></div>
+                  <div class="f-star__image"></div>
+                </div>
+              </div>
+              <div class="image showcase">
+                <img
+                  src="https://assetsio.gnwcdn.com/Honkai-Star-Rail-Aventurine-materials%2C-kit%2C-and-Eidolons-cover.jpg?width=1600&height=900&fit=crop&quality=100&format=png&enable=upscale&auto=webp"
+                  alt=""
+                />
+              </div>
+            </div>
+            <div id="image-standart" class="show">
+              <div class="image description">
+                <h2 class="description-header">Standart</h2>
+                <p class="description-paragraph">
+                  Every 10 warps, guarantee a 4-star gooner character
+                </p>
+                <div class="f-star__showcase">
+                  <div class="f-star__standart"><img src="" alt="" /></div>
+                  <div class="f-star__standart"></div>
+                  <div class="f-star__standart"></div>
+                </div>
+              </div>
+              <div class="image showcase">
+                <img
+                  src="https://gamespace.com/wp-content/uploads/2025/07/Phainon-the-Pinnacle-of-HSR-Hypercarry-780x419.jpg"
+                  alt=""
+                />
+              </div>
+            </div>
+          </div>
+          <!-- banner image end -->
+          <!-- warp button start -->
+          <div class="button-container">
+            <div class="button-single button">1000 x 1</div>
+            <div class="button-multi button">1000 x 10</div>
+            <div id="upgrade-button" class="button close">Close</div>
+          </div>
+          <!-- warp button end -->
+        </div>
+
+        <!-- gacha panel end -->
       </div>
 
-      <!-- gacha panel end -->
-    </div>
-
-    <!-- pop up section start -->
-    <!-- pop up minus -->
-    <div class="currency-minus">
-      <h1>Duitmu Kurang <span id="minus-value"></span> King!</h1>
+      <!-- pop up section start -->
     </div>
     <!-- pop up section end -->
     <!-- transition -->
