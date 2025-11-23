@@ -3,7 +3,10 @@ import { loadGame } from "./data/saveLoad.mjs";
 import { addScore } from "./gameplay/tap.mjs";
 import { upgradeHandler } from "./logic/economy.mjs";
 import { showPanel, switchPanel } from "./ui/panel.mjs";
+import { warpHandler } from "./logic/warp.mjs";
+import { gameData } from "./data/gameData.mjs";
 import * as anim from "./ui/animation.mjs";
+import { updateUI } from "./ui/updateUI.mjs";
 
 loadGame();
 
@@ -81,4 +84,20 @@ element.switch.limited.addEventListener("click", () => {
 
 element.switch.standart.addEventListener("click", () => {
   switchPanel(element.gachaImg.standart, element.switch.standart);
+});
+
+element.gachaBtn.single.addEventListener("click", () => {
+  warpHandler("single");
+});
+
+// dev area
+document.addEventListener("keydown", function (event) {
+  if (event.code === "KeyX") {
+    function cheat() {
+      gameData.scorePoint += 1000;
+    }
+
+    cheat();
+    updateUI();
+  }
 });

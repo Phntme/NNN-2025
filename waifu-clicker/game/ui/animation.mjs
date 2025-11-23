@@ -51,4 +51,29 @@ function upgradeAnimation(variable) {
   }, 500);
 }
 
-export { scorePopup, multiPopup, btnAnimation, upgradeAnimation };
+function doWarpAnimation() {
+  element.warp.container.classList.add("active");
+
+  setTimeout(() => {
+    element.warp.wrapper.classList.add("active");
+    element.warp.star.forEach((star) => {
+      star.classList.add("active");
+    });
+  }, 500);
+
+  setTimeout(() => {
+    element.warp.container.classList.remove("active");
+    element.warp.wrapper.classList.remove("active");
+    element.warp.star.forEach((star) => {
+      star.classList.remove("active");
+    });
+  }, 2500);
+}
+
+export {
+  scorePopup,
+  multiPopup,
+  btnAnimation,
+  upgradeAnimation,
+  doWarpAnimation,
+};

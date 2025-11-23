@@ -173,7 +173,8 @@
 
 /* animasi warp container */
 .warp-animation {
-  /* display: none; */
+  opacity: 0;
+  background-color: #1a1a1a80;
   position: fixed;
   top: 0;
   left: 0;
@@ -184,6 +185,14 @@
   align-items: end;
   gap: 1.5rem;
   pointer-events: none;
+  transition: opacity 0.3s ease-in-out;
+  -webkit-transition: opacity 0.3s ease-in-out;
+  -moz-transition: opacity 0.3s ease-in-out;
+  -ms-transition: opacity 0.3s ease-in-out;
+  -o-transition: opacity 0.3s ease-in-out;
+}
+.warp-animation.active {
+  opacity: 1;
 }
 
 .animation-wrapper {

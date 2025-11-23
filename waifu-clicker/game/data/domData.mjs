@@ -39,4 +39,13 @@ export const element = {
     limited: document.getElementById("image-limited"),
     standart: document.getElementById("image-standart"),
   },
+  gachaBtn: {
+    single: document.getElementById("button-single"),
+    multi: document.getElementById("button-multi"),
+  },
+  warp: {
+    container: document.querySelector(".warp-animation"),
+    wrapper: document.querySelector(".animation-wrapper"),
+    star: document.querySelectorAll(".star"),
+  },
 };
