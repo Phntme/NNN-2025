@@ -193,6 +193,7 @@
 }
 .warp-animation.active {
   opacity: 1;
+  pointer-events: auto;
 }
 
 .animation-wrapper {
@@ -244,6 +245,12 @@
   animation: upStar 1.5s cubic-bezier(0, 1, 0, 1) forwards;
   -webkit-animation: upStar 1.5s cubic-bezier(0, 1, 0, 1) forwards;
   animation-delay: 0.2s;
+}
+
+.warp-result {
+  background-color: red;
+  width: 100%;
+  height: 100%;
 }
 
 /* animasi bintang naek */

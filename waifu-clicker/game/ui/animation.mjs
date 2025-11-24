@@ -67,7 +67,7 @@ function doWarpAnimation() {
     element.warp.star.forEach((star) => {
       star.classList.remove("active");
     });
-  }, 2500);
+  }, 3500);
 }
 
 export {

@@ -7,6 +7,15 @@ function warpHandler(pullType) {
     if (checkWarp(singleCost, gameData.scorePoint)) {
       singlePull();
       doWarpAnimation();
+    } else {
+      console.log("duit kurang");
+    }
+  } else {
+    if (checkWarp(multiCost, gameData.scorePoint)) {
+      multiPull();
+      doWarpAnimation();
+    } else {
+      console.log("duit kurang");
     }
   }
 }
@@ -25,9 +34,20 @@ function getRandomFrom(array) {
 }
 
 function singlePull() {
-  let chance = Math.floor(Math.random() * 100);
-  if (chance <= 100) {
+  let chance = Math.random() * 100;
+  console.log(chance);
+  if (chance <= 1) {
     console.log(getRandomFrom(charPool[5]));
+  } else if (chance <= 11) {
+    console.log(getRandomFrom(charPool[4]));
+  } else {
+    console.log(getRandomFrom(charPool[3]));
+  }
+}
+
+function multiPull() {
+  for (let multi = 0; multi < 10; multi++) {
+    singlePull();
   }
 }
 

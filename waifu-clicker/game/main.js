@@ -90,6 +90,10 @@ element.gachaBtn.single.addEventListener("click", () => {
   warpHandler("single");
 });
 
+element.gachaBtn.multi.addEventListener("click", () => {
+  warpHandler("multi");
+});
+
 // dev area
 document.addEventListener("keydown", function (event) {
   if (event.code === "KeyX") {
@@ -98,6 +102,7 @@ document.addEventListener("keydown", function (event) {
     }
 
     cheat();
+
     updateUI();
   }
 });
