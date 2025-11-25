@@ -98,7 +98,7 @@ element.gachaBtn.multi.addEventListener("click", () => {
 document.addEventListener("keydown", function (event) {
   if (event.code === "KeyX") {
     function cheat() {
-      gameData.scorePoint += 1000;
+      gameData.scorePoint += 100000;
     }
 
     cheat();

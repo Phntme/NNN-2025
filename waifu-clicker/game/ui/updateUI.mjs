@@ -1,5 +1,6 @@
 import { gameData } from "../data/gameData.mjs";
 import { element } from "../data/domData.mjs";
+import { saveGame } from "../data/saveLoad.mjs";
 
 // function ngeformat
 function formatNumber(number) {
@@ -48,4 +49,6 @@ export function updateUI() {
   element.upgradePrice.multi.textContent = formatNumber(
     gameData.upgrade[2].price
   );
+
+  saveGame();
 }

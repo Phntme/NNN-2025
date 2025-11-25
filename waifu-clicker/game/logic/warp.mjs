@@ -1,31 +1,45 @@
 import { charPool } from "../data/charData.mjs";
 import { gameData } from "../data/gameData.mjs";
-import { doWarpAnimation } from "../ui/animation.mjs";
+import { duitKurang } from "./economy.mjs";
+import { showResult } from "../ui/warpPanel.mjs";
+import * as anim from "../ui/animation.mjs";
+import { updateUI } from "../ui/updateUI.mjs";
 
 function warpHandler(pullType) {
   if (pullType === "single") {
     if (checkWarp(singleCost, gameData.scorePoint)) {
+      berhasilWarp(singleCost);
       singlePull();
-      doWarpAnimation();
+      anim.doWarpAnimation();
+      showResult();
     } else {
-      console.log("duit kurang");
+      duitKurang(singleCost);
     }
   } else {
     if (checkWarp(multiCost, gameData.scorePoint)) {
+      berhasilWarp(multiCost);
       multiPull();
-      doWarpAnimation();
+      anim.doWarpAnimation();
+      showResult;
     } else {
-      console.log("duit kurang");
+      duitKurang(multiCost);
     }
   }
+
+  updateUI();
 }
 
 const singleCost = 1000;
 const multiCost = singleCost * 10;
 
+function berhasilWarp(harga) {
+  gameData.scorePoint -= harga;
+}
+
 function checkWarp(warpCost, userPoint) {
-  if (userPoint >= warpCost) return true;
-  else return false;
+  if (userPoint >= warpCost) {
+    return true;
+  } else return false;
 }
 
 function getRandomFrom(array) {

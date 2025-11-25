@@ -74,4 +74,4 @@ function upgradeHandler(namaUpgrade) {
   updateUI();
 }
 
-export { upgradeHandler };
+export { upgradeHandler, duitKurang };

@@ -47,5 +47,6 @@ export const element = {
     container: document.querySelector(".warp-animation"),
     wrapper: document.querySelector(".animation-wrapper"),
     star: document.querySelectorAll(".star"),
+    result: document.getElementById("result"),
   },
 };
