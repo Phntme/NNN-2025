@@ -50,5 +50,11 @@ export function updateUI() {
     gameData.upgrade[2].price
   );
 
+  element.gachaBtn.single.textContent = formatNumber(
+    gameData.warp.price.single * gameData.warp.globalInflation
+  );
+  element.gachaBtn.multi.textContent = formatNumber(
+    gameData.warp.price.multi * gameData.warp.globalInflation
+  );
   saveGame();
 }

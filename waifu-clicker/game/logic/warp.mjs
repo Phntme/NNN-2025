@@ -29,8 +29,8 @@ function warpHandler(pullType) {
   updateUI();
 }
 
-const singleCost = 1000;
-const multiCost = singleCost * 10;
+const singleCost = gameData.warp.price.single;
+const multiCost = gameData.warp.price.multi;
 
 function berhasilWarp(harga) {
   gameData.scorePoint -= harga;

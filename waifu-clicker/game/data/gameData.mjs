@@ -1,5 +1,12 @@
 export const gameData = {
   scorePoint: 0,
+  warp: {
+    globalInflation: 1,
+    price: {
+      single: 1000,
+      multi: 10000,
+    },
+  },
   upgrade: [
     {
       upgradeName: "tap",

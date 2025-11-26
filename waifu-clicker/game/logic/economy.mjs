@@ -24,8 +24,19 @@ function berhasilUpgrade(harga, upgrade) {
   gameData.scorePoint -= harga;
   let upgradeName = upgrade.upgradeName;
 
-  upgrade.upgradeLevel +=
-    upgradeName === "auto" ? 0.5 : upgradeName === "multi" ? 0.25 : 1;
+  let up = (upgrade.upgradeLevel +=
+    upgradeName === "auto" ? 0.5 : upgradeName === "multi" ? 0.25 : 1);
+
+  if (upgradeName === "auto") {
+    up += 0.5;
+    gameData.warp.globalInflation += 0.5;
+  } else if (upgradeName === "multi") {
+    up += 0.25;
+    gameData.warp.globalInflation += 0.25;
+  } else {
+    up += 1;
+    gameData.warp.globalInflation += 0.1;
+  }
 }
 
 // harga naek 7% tiap upgrade
