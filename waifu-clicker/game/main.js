@@ -1,5 +1,5 @@
 import { element } from "./data/domData.mjs";
-import { loadGame } from "./data/saveLoad.mjs";
+import { loadGame, initUpgradeAnimations } from "./data/saveLoad.mjs";
 import { addScore } from "./gameplay/tap.mjs";
 import { upgradeHandler } from "./logic/economy.mjs";
 import { showPanel, switchPanel } from "./ui/panel.mjs";
@@ -9,6 +9,9 @@ import * as anim from "./ui/animation.mjs";
 import { updateUI } from "./ui/updateUI.mjs";
 
 loadGame();
+window.addEventListener("DOMContentLoaded", () => {
+  initUpgradeAnimations();
+});
 
 let canHold = true,
   canPress = true;

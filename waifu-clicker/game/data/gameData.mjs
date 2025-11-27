@@ -13,7 +13,7 @@ export const gameData = {
       upgradeStatus: false,
       upgradeLevel: 1,
       price: 50,
-      animation: document.getElementById("tap-status"),
+      animation: null,
     },
     {
       upgradeName: "auto",
@@ -21,14 +21,14 @@ export const gameData = {
       upgradeLevel: 0,
       autoInterval: 5000,
       price: 200,
-      animation: document.getElementById("auto-status"),
+      animation: null,
     },
     {
       upgradeName: "multi",
       upgradeStatus: false,
       upgradeLevel: 1,
       price: 500,
-      animation: document.getElementById("multi-status"),
+      animation: null,
     },
   ],
 };
