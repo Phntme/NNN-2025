@@ -6,6 +6,9 @@ import * as anim from "../ui/animation.mjs";
 import { updateUI } from "../ui/updateUI.mjs";
 
 function warpHandler(pullType) {
+  let singleCost = gameData.warp.price.single;
+  let multiCost = gameData.warp.price.multi;
+
   if (pullType === "single") {
     if (checkWarp(singleCost, gameData.scorePoint)) {
       berhasilWarp(singleCost);
@@ -29,9 +32,6 @@ function warpHandler(pullType) {
   updateUI();
 }
 
-const singleCost = gameData.warp.price.single;
-const multiCost = gameData.warp.price.multi;
-
 function berhasilWarp(harga) {
   gameData.scorePoint -= harga;
 }
@@ -49,7 +49,6 @@ function getRandomFrom(array) {
 
 function singlePull() {
   let chance = Math.random() * 100;
-  console.log(chance);
   if (chance <= 1) {
     console.log(getRandomFrom(charPool[5]));
   } else if (chance <= 11) {

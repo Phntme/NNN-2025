@@ -1,4 +1,5 @@
 import { element } from "../data/domData.mjs";
+import { gameData } from "../data/gameData.mjs";
 
 export function showPanel(namaPanel) {
   element.transition.classList.add("active");
@@ -21,4 +22,10 @@ export function switchPanel(namaPanel, tombol) {
   });
   namaPanel.classList.add("active");
   tombol.classList.add("active");
+}
+
+// ketika user ke warp section terapkan harga warp yang inflasi
+export function warpInflation() {
+  gameData.warp.price.single = 1000 * gameData.warp.globalInflation;
+  gameData.warp.price.multi = 10000 * gameData.warp.globalInflation;
 }

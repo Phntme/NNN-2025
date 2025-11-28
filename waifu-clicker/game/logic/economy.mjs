@@ -4,6 +4,7 @@ import { element } from "../data/domData.mjs";
 import { updateUI } from "../ui/updateUI.mjs";
 import { saveGame } from "../data/saveLoad.mjs";
 import { startAuto } from "../gameplay/auto.mjs";
+import { formatNumber } from "../ui/updateUI.mjs";
 
 // ngecek upgrade apa yang dipilih user
 function getUpgradeName(name) {
@@ -57,7 +58,9 @@ function inflasi(level, hargaUpgrade) {
 // kalo duit kurang
 function duitKurang(kurangBerapa) {
   let kurang = gameData.scorePoint - kurangBerapa;
-  element.gameValue.minus.textContent = Math.floor(Math.abs(kurang));
+  element.gameValue.minus.textContent = formatNumber(
+    Math.floor(Math.abs(kurang))
+  );
   element.popup.minus.classList.add("showmin");
   setTimeout(() => {
     element.popup.minus.classList.remove("showmin");
@@ -67,7 +70,6 @@ function duitKurang(kurangBerapa) {
 function upgradeHandler(namaUpgrade) {
   const upgrade = getUpgradeName(namaUpgrade);
   const name = upgrade.upgradeName;
-  const animate = upgrade.animation;
 
   if (checkUpg(upgrade.price)) {
     berhasilUpgrade(upgrade.price, upgrade);

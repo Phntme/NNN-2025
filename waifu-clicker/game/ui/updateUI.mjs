@@ -3,7 +3,7 @@ import { element } from "../data/domData.mjs";
 import { saveGame } from "../data/saveLoad.mjs";
 
 // function ngeformat
-function formatNumber(number) {
+export function formatNumber(number) {
   if (number < 1000) return Math.floor(number);
 
   // unit buat format
@@ -43,6 +43,7 @@ export function updateUI() {
   element.upgradePrice.tap.textContent = formatNumber(
     gameData.upgrade[0].price
   );
+
   element.upgradePrice.auto.textContent = formatNumber(
     gameData.upgrade[1].price
   );
@@ -51,10 +52,8 @@ export function updateUI() {
   );
 
   element.gachaBtn.single.textContent = formatNumber(
-    gameData.warp.price.single * gameData.warp.globalInflation
+    gameData.warp.price.single
   );
-  element.gachaBtn.multi.textContent = formatNumber(
-    gameData.warp.price.multi * gameData.warp.globalInflation
-  );
+  element.gachaBtn.multi.textContent = formatNumber(gameData.warp.price.multi);
   saveGame();
 }

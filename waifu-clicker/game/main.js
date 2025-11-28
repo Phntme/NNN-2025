@@ -7,6 +7,7 @@ import { warpHandler } from "./logic/warp.mjs";
 import { gameData } from "./data/gameData.mjs";
 import * as anim from "./ui/animation.mjs";
 import { updateUI } from "./ui/updateUI.mjs";
+import { warpInflation } from "./ui/panel.mjs";
 
 loadGame();
 window.addEventListener("DOMContentLoaded", () => {
@@ -79,6 +80,8 @@ element.featureBtn.upgrade.addEventListener("click", () => {
 
 element.featureBtn.warp.addEventListener("click", () => {
   showPanel(element.panel.warp);
+  warpInflation();
+  updateUI();
 });
 
 element.switch.limited.addEventListener("click", () => {
