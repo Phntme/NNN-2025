@@ -4,15 +4,17 @@ import { duitKurang } from "./economy.mjs";
 import { showResult } from "../ui/warpPanel.mjs";
 import * as anim from "../ui/animation.mjs";
 import { updateUI } from "../ui/updateUI.mjs";
+import { element } from "../data/domData.mjs";
 
 function warpHandler(pullType) {
   let singleCost = gameData.warp.price.single;
   let multiCost = gameData.warp.price.multi;
+  let resultNow = [];
 
   if (pullType === "single") {
     if (checkWarp(singleCost, gameData.scorePoint)) {
       berhasilWarp(singleCost);
-      singlePull();
+      resultNow.push(singlePull());
       anim.doWarpAnimation();
       showResult();
     } else {
@@ -28,6 +30,11 @@ function warpHandler(pullType) {
       duitKurang(multiCost);
     }
   }
+  console.log(resultNow[0].name);
+
+  element.warp.name.textContent = resultNow[0].name;
+  element.warp.rarity.textContent = resultNow[0].rarity;
+  element.warp.img.src = resultNow[0].source;
 
   updateUI();
 }
@@ -50,11 +57,11 @@ function getRandomFrom(array) {
 function singlePull() {
   let chance = Math.random() * 100;
   if (chance <= 1) {
-    console.log(getRandomFrom(charPool[5]));
+    return getRandomFrom(charPool[5]);
   } else if (chance <= 11) {
-    console.log(getRandomFrom(charPool[4]));
+    return getRandomFrom(charPool[4]);
   } else {
-    console.log(getRandomFrom(charPool[3]));
+    return getRandomFrom(charPool[3]);
   }
 }
 

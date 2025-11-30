@@ -100,6 +100,10 @@ element.gachaBtn.multi.addEventListener("click", () => {
   warpHandler("multi");
 });
 
+element.warp.result.addEventListener("click", () => {
+  element.warp.result.classList.remove("active");
+});
+
 // dev area
 document.addEventListener("keydown", function (event) {
   if (event.code === "KeyX") {

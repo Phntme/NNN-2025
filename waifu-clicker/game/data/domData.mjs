@@ -48,5 +48,8 @@ export const element = {
     wrapper: document.querySelector(".animation-wrapper"),
     star: document.querySelectorAll(".star"),
     result: document.getElementById("result"),
+    rarity: document.getElementById("result-rarity"),
+    name: document.getElementById("result-name"),
+    img: document.getElementById("result-img"),
   },
 };
